@@ -5,26 +5,26 @@ def forca(e):
     :return: retorna cada fase do desenho de acordo com a quantidade de erros
     """
     if e == 0:
-        forca_vazia()
+        return forca_vazia()
     elif e == 1:
-        cabeca()
+        return cabeca()
     elif e == 2:
-        tronco()
+        return tronco()
     elif e == 3:
-        braco_d()
+        return braco_d()
     elif e == 4:
-        braco_e()
+        return braco_e()
     elif e == 5:
-        perna_d()
+        return perna_d()
     elif e == 6:
-        perna_e()
+        return perna_e()
 
 
 def forca_vazia():
-    print(r"""
+    return (r"""
 _____________
-|           |
-|           |
+|                        |
+|                        |
 |         
 |         
 |           
@@ -38,7 +38,7 @@ _____________
 
 
 def cabeca():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_
@@ -55,7 +55,7 @@ _____________
 
 
 def tronco():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_
@@ -72,7 +72,7 @@ _____________
 
 
 def braco_d():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_
@@ -89,7 +89,7 @@ _____________
 
 
 def braco_e():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_
@@ -106,7 +106,7 @@ _____________
 
 
 def perna_d():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_
@@ -123,7 +123,7 @@ _____________
 
 
 def perna_e():
-    print(r"""
+    return (r"""
 _____________
 |           |
 |          _|_

@@ -15,23 +15,19 @@ def digitadas(palav):
     return digi
 
 
-def limpatela():
-    import pyautogui
-    pyautogui.hotkey('ctrl', 'l')
-
-
 def exibir(digita):
     """
     Exibe a palavra se formando, ou seja, os espaços da palavra e as letras conforme o jogador vai acertando.
     :param digita: as letras que o jogador digitou e fazem parte da palavra.
     """
-    print(end='                           ')
+    exibida = ''
     for let in digita:
         if let == '':
-            print(' _ ', end='')
+            exibida += ' _ '
         else:
-            print(let, end='')
-    print()
+            exibida += let
+    return exibida
+
 
 
 def preencher(palav, digi, letra):
@@ -61,9 +57,10 @@ def mostraalfa(alfab):
     """
     Exibe o alfabeto com exceção das letras que ja foram digitadas.
     """
+    exibido = ''
     for let in alfab:
-        print(let, end=' ')
-    print()
+        exibido += let + '    '
+    return exibido
 
 
 def ganhou(digi):
@@ -75,17 +72,8 @@ def ganhou(digi):
         return True
 
 
-def titulo():
-    print()
-    print('-' * 40)
-    print(f'{"JOGO DA FORCA":^40}')
-    print('-' * 40)
-    print()
-
 
 def interface(err, dig, alfab):
-    limpatela()
-    titulo()
     print(f'erros = {err}')
     boneco.forca(err)
     exibir(dig)
