@@ -1,4 +1,16 @@
+import sys
 from Jogo_da_forca1 import funcoes
+from PyQt5.QtWidgets import QApplication,QMainWindow
+from Jogo_da_forca1 import design_jogo_da_forca
+
+
+class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        super().setupUi(self)
+
+
+        self.btnA.clicked.connect()
 
 funcoes.titulo()
 palavrastr = str(input('Digite uma palavra sem que o jogador veja: '))\
@@ -35,3 +47,10 @@ while True:
         print(f'A palavra era {palavrastr}!')
         print('Voce ganhou!')
         break
+
+
+if __name__ == '__main__':
+    qt = QApplication(sys.argv)
+    jogodaforca = JogoDaForca()
+    jogodaforca.show()
+    qt.exec_()
