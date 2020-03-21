@@ -16,6 +16,13 @@ def let_botao(num):
     return (alfabeto[num])
 
 
+class EscolhePalavra(QMainWindow):
+    pass
+
+
+
+
+
 class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
