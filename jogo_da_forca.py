@@ -4,7 +4,7 @@ from Jogo_da_forca1 import funcoes
 from Jogo_da_forca1 import boneco
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from Jogo_da_forca1 import design_jogo_da_forca
-
+from Jogo_da_forca1 import
 
 alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
             'h', 'i', 'j', 'k', 'l', 'm', 'n',
@@ -16,7 +16,7 @@ def let_botao(num):
     return (alfabeto[num])
 
 
-class EscolhePalavra(QMainWindow):
+class EscolhePalavra(QMainWindow,E):
     pass
 
 
