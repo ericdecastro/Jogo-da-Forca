@@ -1,9 +1,9 @@
+import functools
 import sys
 from Jogo_da_forca1 import funcoes
 from Jogo_da_forca1 import boneco
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from Jogo_da_forca1 import design_jogo_da_forca
-
 
 
 alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -12,21 +12,8 @@ alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
             'v', 'w', 'x', 'y', 'z']
 
 
-def let_a():
-    print(alfabeto[0])
-
-
-def let_b():
-    print(alfabeto[1])
-
-
-def let_c():
-    print(alfabeto[2])
-
-
-def let_d():
-    print(alfabeto[3])
-
+def let_botao(num):
+    return (alfabeto[num])
 
 
 class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
@@ -34,10 +21,32 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         super().__init__(parent)
         super().setupUi(self)
 
-        self.btnA.clicked.connect(let_a)
-        self.btnB.clicked.connect(let_b)
-        self.btnC.clicked.connect(let_c)
-
+        self.btnA.clicked.connect(functools.partial(let_botao, 0))
+        self.btnB.clicked.connect(functools.partial(let_botao, 1))
+        self.btnC.clicked.connect(functools.partial(let_botao, 2))
+        self.btnD.clicked.connect(functools.partial(let_botao, 3))
+        self.btnE.clicked.connect(functools.partial(let_botao, 4))
+        self.btnF.clicked.connect(functools.partial(let_botao, 5))
+        self.btnG.clicked.connect(functools.partial(let_botao, 6))
+        self.btnH.clicked.connect(functools.partial(let_botao, 7))
+        self.btnI.clicked.connect(functools.partial(let_botao, 8))
+        self.btnJ.clicked.connect(functools.partial(let_botao, 9))
+        self.btnK.clicked.connect(functools.partial(let_botao, 10))
+        self.btnL.clicked.connect(functools.partial(let_botao, 11))
+        self.btnM.clicked.connect(functools.partial(let_botao, 12))
+        self.btnN.clicked.connect(functools.partial(let_botao, 13))
+        self.btnO.clicked.connect(functools.partial(let_botao, 14))
+        self.btnP.clicked.connect(functools.partial(let_botao, 15))
+        self.btnQ.clicked.connect(functools.partial(let_botao, 16))
+        self.btnR.clicked.connect(functools.partial(let_botao, 17))
+        self.btnS.clicked.connect(functools.partial(let_botao, 18))
+        self.btnT.clicked.connect(functools.partial(let_botao, 19))
+        self.btnU.clicked.connect(functools.partial(let_botao, 20))
+        self.btnV.clicked.connect(functools.partial(let_botao, 21))
+        self.btnW.clicked.connect(functools.partial(let_botao, 22))
+        self.btnX.clicked.connect(functools.partial(let_botao, 23))
+        self.btnY.clicked.connect(functools.partial(let_botao, 24))
+        self.btnZ.clicked.connect(functools.partial(let_botao, 25))
 
         self.labForca.setText(str(boneco.forca(erros)))
         self.labErros.setText('Erros = ' + (str(erros)))
@@ -53,7 +62,7 @@ digitadas = funcoes.digitadas(palavrastr)
 erros = 0
 
 while True:
-    letra = input('Digite uma letra: ').lower().strip()
+    letra = input('Digite uma letra: ').lower().strip()[0]
     if letra not in palavrastr and letra in alfabeto:
         erros += 1
     if letra not in alfabeto:
