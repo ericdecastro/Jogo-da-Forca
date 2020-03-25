@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>173</height>
+    <width>465</width>
+    <height>177</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Jogo da Forca</string>
@@ -17,11 +23,17 @@
    <widget class="QPushButton" name="okButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>180</x>
       <y>100</y>
       <width>101</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Ok</string>
@@ -31,29 +43,42 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>9</y>
+      <y>10</y>
       <width>451</width>
       <height>24</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
+      <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
     </property>
     <property name="text">
-     <string>Digite uma  palavra sem que os jogadores vejam.</string>
+     <string>Digite uma  palavra sem que os jogadores vejam:</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="textDigitePalavra">
+   <widget class="QLineEdit" name="textDigitePalavra">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
       <width>441</width>
-      <height>31</height>
+      <height>28</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labTesteVariavel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
@@ -62,7 +87,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>463</width>
+     <width>465</width>
      <height>22</height>
     </rect>
    </property>

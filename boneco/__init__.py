@@ -23,8 +23,8 @@ def forca(e):
 def forca_vazia():
     return (r"""
 _____________
-|                        |
-|                        |
+|           |
+|           |
 |         
 |         
 |           
