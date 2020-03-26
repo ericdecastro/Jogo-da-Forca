@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'design_escolhe_palavra.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.0
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_EscolhePalavra(object):
     def setupUi(self, EscolhePalavra):
@@ -60,3 +58,4 @@ class Ui_EscolhePalavra(object):
         self.okButton.setText(_translate("EscolhePalavra", "Ok"))
         self.labelDigitePalavra.setText(_translate("EscolhePalavra", "Digite uma  palavra sem que os jogadores vejam:"))
         self.labTesteVariavel.setText(_translate("EscolhePalavra", "TextLabel"))
+
