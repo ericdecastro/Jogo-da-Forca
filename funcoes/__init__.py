@@ -41,26 +41,6 @@ def preencher(palav, digi, letra):
             palav[n] = ''
 
 
-def alfa(l, alfab):
-    """
-    Remove as letras digitadas da lista 'alfabeto'.
-    :param l: letra digitada pelo usuário.
-    :param alfab: Recebe a lista 'alfabeto'
-    """
-    if l in alfab:
-        for n, let in enumerate(alfab):
-            if let == l:
-                alfab[n] = '_'
-
-
-def mostraalfa(alfab):
-    """
-    Exibe o alfabeto com exceção das letras que ja foram digitadas.
-    """
-    exibido = ''
-    for let in alfab:
-        exibido += let + '    '
-    return exibido
 
 
 def ganhou(digi):
@@ -77,6 +57,4 @@ def interface(err, dig, alfab):
     print(f'erros = {err}')
     boneco.forca(err)
     exibir(dig)
-    print()
-    mostraalfa(alfab)
     print()

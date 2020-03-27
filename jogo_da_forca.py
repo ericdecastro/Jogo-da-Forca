@@ -1,16 +1,12 @@
 import functools
 import sys
+from time import sleep
 from Jogo_da_forca1 import funcoes
 from Jogo_da_forca1 import boneco
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QtCore import QWaitCondition
 from Jogo_da_forca1 import design_jogo_da_forca
 from Jogo_da_forca1 import design_escolhe_palavra
-
-alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
-            'h', 'i', 'j', 'k', 'l', 'm', 'n',
-            'o', 'p', 'q', 'r', 's', 't', 'u',
-            'v', 'w', 'x', 'y', 'z']
 
 
 # class EscolhePalavra(QMainWindow, design_escolhe_palavra.Ui_EscolhePalavra):
@@ -37,66 +33,62 @@ alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
     #         self.close()
 
 
-class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, ):
+class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
         self.setFixedSize(790, 600)
-        erros = 0
-        palavrastr = 'abcd'
-        palavra = funcoes.palavra(palavrastr)
-        digitadas = funcoes.digitadas(palavrastr)
-        # self.letra = ''
+        self.erros = 0
+        self.palavrastr = 'abcd'.lower().strip().replace(' ', '').replace('-', '')
+        self.palavra = funcoes.palavra(self.palavrastr)
+        self.digitadas = funcoes.digitadas(self.palavrastr)
+
         self.show()
-        self.labAlfabeto.setText(str(funcoes.mostraalfa(alfabeto)))
-        self.labPalavra.setText(str(funcoes.exibir(funcoes.digitadas(funcoes.palavra(palavrastr)))))
-        self.labErros.setText('Erros = ' + (str(erros)))
-        self.labForca.setText(str(boneco.forca(erros)))
-        # self.logica_jogo(erros, palavrastr, palavra, digitadas)
+        self.exibe()
 
-        self.btnA.clicked.connect(functools.partial(self.click_btn, self.btnA, palavrastr, erros))
-        self.btnB.clicked.connect(functools.partial(self.click_btn, self.btnB, palavrastr, erros))
-        self.btnC.clicked.connect(functools.partial(self.click_btn, self.btnC, palavrastr, erros))
-        self.btnD.clicked.connect(functools.partial(self.click_btn, self.btnD, palavrastr, erros))
-        self.btnE.clicked.connect(functools.partial(self.click_btn, self.btnE, palavrastr, erros))
-        self.btnF.clicked.connect(functools.partial(self.click_btn, self.btnF, palavrastr, erros))
-        self.btnG.clicked.connect(functools.partial(self.click_btn, self.btnG, palavrastr, erros))
-        self.btnH.clicked.connect(functools.partial(self.click_btn, self.btnH, palavrastr, erros))
-        self.btnI.clicked.connect(functools.partial(self.click_btn, self.btnI, palavrastr, erros))
-        self.btnJ.clicked.connect(functools.partial(self.click_btn, self.btnJ, palavrastr, erros))
-        self.btnK.clicked.connect(functools.partial(self.click_btn, self.btnK, palavrastr, erros))
-        self.btnL.clicked.connect(functools.partial(self.click_btn, self.btnL, palavrastr, erros))
-        self.btnM.clicked.connect(functools.partial(self.click_btn, self.btnM, palavrastr, erros))
-        self.btnN.clicked.connect(functools.partial(self.click_btn, self.btnN, palavrastr, erros))
-        self.btnO.clicked.connect(functools.partial(self.click_btn, self.btnO, palavrastr, erros))
-        self.btnP.clicked.connect(functools.partial(self.click_btn, self.btnP, palavrastr, erros))
-        self.btnQ.clicked.connect(functools.partial(self.click_btn, self.btnQ, palavrastr, erros))
-        self.btnR.clicked.connect(functools.partial(self.click_btn, self.btnR, palavrastr, erros))
-        self.btnS.clicked.connect(functools.partial(self.click_btn, self.btnS, palavrastr, erros))
-        self.btnT.clicked.connect(functools.partial(self.click_btn, self.btnT, palavrastr, erros))
-        self.btnU.clicked.connect(functools.partial(self.click_btn, self.btnU, palavrastr, erros))
-        self.btnV.clicked.connect(functools.partial(self.click_btn, self.btnV, palavrastr, erros))
-        self.btnW.clicked.connect(functools.partial(self.click_btn, self.btnW, palavrastr, erros))
-        self.btnX.clicked.connect(functools.partial(self.click_btn, self.btnX, palavrastr, erros))
-        self.btnY.clicked.connect(functools.partial(self.click_btn, self.btnY, palavrastr, erros))
-        self.btnZ.clicked.connect(functools.partial(self.click_btn, self.btnZ, palavrastr, erros))
+        self.btnA.clicked.connect(functools.partial(self.click_btn, self.btnA))
+        self.btnB.clicked.connect(functools.partial(self.click_btn, self.btnB))
+        self.btnC.clicked.connect(functools.partial(self.click_btn, self.btnC))
+        self.btnD.clicked.connect(functools.partial(self.click_btn, self.btnD))
+        self.btnE.clicked.connect(functools.partial(self.click_btn, self.btnE))
+        self.btnF.clicked.connect(functools.partial(self.click_btn, self.btnF))
+        self.btnG.clicked.connect(functools.partial(self.click_btn, self.btnG))
+        self.btnH.clicked.connect(functools.partial(self.click_btn, self.btnH))
+        self.btnI.clicked.connect(functools.partial(self.click_btn, self.btnI))
+        self.btnJ.clicked.connect(functools.partial(self.click_btn, self.btnJ))
+        self.btnK.clicked.connect(functools.partial(self.click_btn, self.btnK))
+        self.btnL.clicked.connect(functools.partial(self.click_btn, self.btnL))
+        self.btnM.clicked.connect(functools.partial(self.click_btn, self.btnM))
+        self.btnN.clicked.connect(functools.partial(self.click_btn, self.btnN))
+        self.btnO.clicked.connect(functools.partial(self.click_btn, self.btnO))
+        self.btnP.clicked.connect(functools.partial(self.click_btn, self.btnP))
+        self.btnQ.clicked.connect(functools.partial(self.click_btn, self.btnQ))
+        self.btnR.clicked.connect(functools.partial(self.click_btn, self.btnR))
+        self.btnS.clicked.connect(functools.partial(self.click_btn, self.btnS))
+        self.btnT.clicked.connect(functools.partial(self.click_btn, self.btnT))
+        self.btnU.clicked.connect(functools.partial(self.click_btn, self.btnU))
+        self.btnV.clicked.connect(functools.partial(self.click_btn, self.btnV))
+        self.btnW.clicked.connect(functools.partial(self.click_btn, self.btnW))
+        self.btnX.clicked.connect(functools.partial(self.click_btn, self.btnX))
+        self.btnY.clicked.connect(functools.partial(self.click_btn, self.btnY))
+        self.btnZ.clicked.connect(functools.partial(self.click_btn, self.btnZ))
 
-    # def click_btn(self, btn):
-    #     self.labLetra.setText(btn.text().lower())
-    #     print(btn.text())
-
-
-    def click_btn(self, btn, palavrastr, erros):
+    def click_btn(self, btn):
         if btn.clicked:
-            if btn.text().lower() not in palavrastr:
-                erros += 1
-        print(erros)
+            btn.setDisabled(True)
+            if btn.text().lower() not in self.palavra:
+                self.erros += 1
+                self.exibe()
+            # else:
+            #     self.labPalavra.setText(funcoes.preencher(self.palavra, self.digitadas, btn.text()))
 
+    def exibe(self):
 
+        self.labPalavra.setText(str(funcoes.exibir(funcoes.digitadas(self.palavra))))
+        # self.labPalavra.setText(str(self.palavra))
 
-    @staticmethod
-    def let_botao(num):
-        return alfabeto[num]
+        self.labErros.setText('Erros = ' + (str(self.erros)))
+        self.labForca.setText(str(boneco.forca(self.erros)))
 
     # def logica_jogo(self, erros, palavrastr, palavra, digitadas):
     #     while True:
@@ -126,7 +118,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, ):
 
 # print(palavrastr)
 # palavrastr = str(input('Digite uma palavra sem que o jogador veja: '))\
-#     .lower().strip().replace(' ', '').replace('-', '')
+#
 #
 # palavra = funcoes.palavra(palavrastr)
 # digitadas = funcoes.digitadas(palavrastr)

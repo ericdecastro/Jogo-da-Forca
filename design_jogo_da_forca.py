@@ -14,13 +14,6 @@ class Ui_JogodaForca(object):
         JogodaForca.resize(816, 600)
         self.centralwidget = QtWidgets.QWidget(JogodaForca)
         self.centralwidget.setObjectName("centralwidget")
-        self.labAlfabeto = QtWidgets.QLabel(self.centralwidget)
-        self.labAlfabeto.setGeometry(QtCore.QRect(20, 420, 771, 31))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        font.setItalic(True)
-        self.labAlfabeto.setFont(font)
-        self.labAlfabeto.setObjectName("labAlfabeto")
         self.labForca = QtWidgets.QLabel(self.centralwidget)
         self.labForca.setGeometry(QtCore.QRect(10, 30, 331, 381))
         font = QtGui.QFont()
@@ -243,7 +236,6 @@ class Ui_JogodaForca(object):
     def retranslateUi(self, JogodaForca):
         _translate = QtCore.QCoreApplication.translate
         JogodaForca.setWindowTitle(_translate("JogodaForca", "Jogo da Forca"))
-        self.labAlfabeto.setText(_translate("JogodaForca", "alfabeto"))
         self.labForca.setText(_translate("JogodaForca", "forca"))
         self.labErros.setText(_translate("JogodaForca", "erros"))
         self.btnA.setText(_translate("JogodaForca", "A"))

@@ -16,7 +16,7 @@ def forca(e):
         return braco_e()
     elif e == 5:
         return perna_d()
-    elif e == 6:
+    elif e >= 6:
         return perna_e()
 
 
