@@ -23,7 +23,7 @@
    <widget class="QPushButton" name="okButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>350</x>
       <y>100</y>
       <width>101</width>
       <height>28</height>
@@ -43,7 +43,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>20</y>
       <width>451</width>
       <height>24</height>
      </rect>
@@ -68,17 +68,17 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="labTesteVariavel">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>240</x>
       <y>100</y>
-      <width>141</width>
-      <height>16</height>
+      <width>90</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Cancelar</string>
     </property>
    </widget>
   </widget>

@@ -1,13 +1,6 @@
 from Jogo_da_forca1 import boneco
 
 
-def palavra(pstr):
-    palav = []
-    for n, l in enumerate(pstr):
-        palav += pstr[n]
-    return palav
-
-
 def digitadas(palav):
     digi = []
     for let in palav:
@@ -41,8 +34,6 @@ def preencher(palav, digi, letra):
             palav[n] = ''
 
 
-
-
 def ganhou(digi):
     acerto = 0
     for let in digi:
@@ -50,11 +41,3 @@ def ganhou(digi):
             acerto += 1
     if acerto == len(digi):
         return True
-
-
-
-def interface(err, dig, alfab):
-    print(f'erros = {err}')
-    boneco.forca(err)
-    exibir(dig)
-    print()

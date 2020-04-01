@@ -1,49 +1,26 @@
 import functools
 import sys
-from time import sleep
+import os
+
+from PyQt5.QtCore import Qt
+
 from Jogo_da_forca1 import funcoes
 from Jogo_da_forca1 import boneco
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
-from PyQt5.QtCore import QWaitCondition
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QDialog, QDialogButtonBox, \
+    QFormLayout, QLabel, QGridLayout
 from Jogo_da_forca1 import design_jogo_da_forca
-from Jogo_da_forca1 import design_escolhe_palavra
 
 
-# class EscolhePalavra(QMainWindow, design_escolhe_palavra.Ui_EscolhePalavra):
-#     def __init__(self, parent=None):
-#         super().__init__(parent)
-#         super().setupUi(self)
-#         self.setFixedSize(490, 300)
-        # self.show()
-        # self.okButton.clicked.connect(self.get_text)
-        # self.okButton.clicked.connect(self.fecha)
-        # self.gettext()
-
-    # def gettext(self):
-    #     text, ok = QInputDialog.getText(self, 'Palavra', 'Escolha uma palavra sem que os outros jogadores vejam: ')
-    #     if ok:
-    #         self.labTesteVariavel.setText(str(text))
-
-    # def get_text(self):
-    #     escolha = self.textDigitePalavra.text()
-    #     self.labTesteVariavel.setText(escolha)
-    #
-    # def fecha(self):
-    #     if self.textDigitePalavra.text() != '':
-    #         self.close()
-
-
-class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
+class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
-        self.setFixedSize(790, 600)
+        self.palavra = ''
+        self.setFixedSize(780, 540)
         self.erros = 0
-        self.palavrastr = 'abcd'.lower().strip().replace(' ', '').replace('-', '')
-        self.palavra = funcoes.palavra(self.palavrastr)
-        self.digitadas = funcoes.digitadas(self.palavrastr)
-
         self.show()
+        self.exibe()
+        self.palavra = self.funcao_palavra()
         self.exibe()
 
         self.btnA.clicked.connect(functools.partial(self.click_btn, self.btnA))
@@ -76,84 +53,78 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def click_btn(self, btn):
         if btn.clicked:
             btn.setDisabled(True)
-            if btn.text().lower() not in self.palavra:
+            if btn.text().lower() in self.palavra:
+                pass
+            else:
                 self.erros += 1
                 self.exibe()
-            # else:
-            #     self.labPalavra.setText(funcoes.preencher(self.palavra, self.digitadas, btn.text()))
+            if self.erros == 6:
+                self.resultado(ganhou=False)
 
     def exibe(self):
 
         self.labPalavra.setText(str(funcoes.exibir(funcoes.digitadas(self.palavra))))
-        # self.labPalavra.setText(str(self.palavra))
-
         self.labErros.setText('Erros = ' + (str(self.erros)))
         self.labForca.setText(str(boneco.forca(self.erros)))
 
-    # def logica_jogo(self, erros, palavrastr, palavra, digitadas):
-    #     while True:
+    def resultado(self, ganhou=True):
+        box = QMessageBox()
+        box.setWindowTitle('Jogo da Forca')
+        if ganhou:
+            box.setText('Voce ganhou! Quer jogar de novo?')
+        else:
+            box.setText(f'Voce perdeu! A palavra era: {self.palavra}   Quer jogar de novo?')
+        box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        btn_s = box.button(QMessageBox.Yes)
+        btn_s.setText('Sim')
+        btn_n = box.button(QMessageBox.No)
+        btn_n.setText('Não')
+        box.exec_()
 
-            # letra = self.labLetra.text()
-            # if letra not in palavrastr and letra in alfabeto:
-            #     erros += 1
-            #
-            # if letra not in alfabeto:
-            #     continue
-            #
-            # funcoes.alfa(letra, alfabeto)
-            # funcoes.preencher(palavra, digitadas, letra)
-            # if erros == 6:
-            #     funcoes.interface(erros, digitadas, alfabeto)
-            #     print()
-            #     print(f'A palavra era {palavrastr}!')
-            #     print('Você perdeu!')
-            #     break
-            # if funcoes.ganhou(digitadas):
-            #     funcoes.interface(erros, digitadas, alfabeto)
-            #     print()
-            #     print(f'A palavra era {palavrastr}!')
-            #     print('Voce ganhou!')
-            #     break
+        if box.clickedButton() == btn_s:
+            self.reinicia()
+        if box.clickedButton() == btn_n:
+            sys.exit()
 
+    def funcao_palavra(self):
 
-# print(palavrastr)
-# palavrastr = str(input('Digite uma palavra sem que o jogador veja: '))\
-#
-#
-# palavra = funcoes.palavra(palavrastr)
-# digitadas = funcoes.digitadas(palavrastr)
-#
-# erros = 0
+        boxp = QDialog()
+        boxp.setWindowTitle('Palavra')
+        boxp.setFixedSize(500, 100)
+        boxp.label = QLabel('Digite uma palavra sem que os jogadores vejam: ', boxp)
+        boxp.texto = QLineEdit(boxp)
+        boxp.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        boxp.btn.accepted.connect(boxp.accept)
+        boxp.btn.rejected.connect(self.fechar)
+        boxp.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+        boxp.texto.textChanged.connect(
+            lambda text: boxp.btn.button(QDialogButtonBox.Ok).setEnabled(True) if text
+            else boxp.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+        )
+        boxp.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+        layout = QFormLayout()
+        layout.addWidget(boxp.label)
+        layout.addWidget(boxp.texto)
+        layout.addWidget(boxp.btn)
 
-# while True:
-#     letra = input('Digite uma letra: ').lower().strip()[0]
-#     if letra not in palavrastr and letra in alfabeto:
-#         erros += 1
-#     if letra not in alfabeto:
-#         print('Já foi')
-#         continue
-#     funcoes.alfa(letra, alfabeto)
-#     if len(letra) > 1:
-#         print('Digite apenas uma letra')
-#         continue
-#     funcoes.preencher(palavra, digitadas, letra)
-#     if erros == 6:
-#         funcoes.interface(erros, digitadas, alfabeto)
-#         print()
-#         print(f'A palavra era {palavrastr}!')
-#         print('Você perdeu!')
-#         break
-#     if funcoes.ganhou(digitadas):
-#         funcoes.interface(erros, digitadas, alfabeto)
-#         print()
-#         print(f'A palavra era {palavrastr}!')
-#         print('Voce ganhou!')
-#         break
+        boxp.setLayout(layout)
+        boxp.exec_()
+
+        return boxp.texto.text().lower().strip().replace(' ', '').replace('-', '')
+
+    @staticmethod
+    def fechar():
+        sys.exit()
+
+    @staticmethod
+    def reinicia():
+        python = sys.executable
+        os.execl(python, python, *sys.argv)
 
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
-    # escolhepalavra = EscolhePalavra()
     jogodaforca = JogoDaForca()
-    jogodaforca.show()
     qt.exec_()
+
+
