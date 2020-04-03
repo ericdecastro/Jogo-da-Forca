@@ -4,10 +4,10 @@ import os
 
 from PyQt5.QtCore import Qt
 
-from Jogo_da_forca1 import funcoes
+
 from Jogo_da_forca1 import boneco
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QDialog, QDialogButtonBox, \
-    QFormLayout, QLabel, QGridLayout
+    QFormLayout, QLabel
 from Jogo_da_forca1 import design_jogo_da_forca
 
 
@@ -16,11 +16,15 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
         super().__init__(parent)
         super().setupUi(self)
         self.palavra = ''
-        self.setFixedSize(780, 540)
+        self.setFixedSize(840, 540)
         self.erros = 0
+        self.acertos = 0
         self.show()
+        self.labPalavra.setText('')
         self.exibe()
         self.palavra = self.funcao_palavra()
+        self.digitada = [' _ '] * len(self.palavra)
+        self.labPalavra.setText(' _ ' * len(self.palavra))
         self.exibe()
 
         self.btnA.clicked.connect(functools.partial(self.click_btn, self.btnA))
@@ -53,44 +57,60 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
     def click_btn(self, btn):
         if btn.clicked:
             btn.setDisabled(True)
-            if btn.text().lower() in self.palavra:
-                pass
-            else:
+            if btn.text().lower() not in self.palavra:
                 self.erros += 1
                 self.exibe()
+
+            else:
+                for num, letra in enumerate(self.palavra):
+
+                    if btn.text().lower() == letra:
+                        self.digitada[num] = f' {letra} '
+                        self.acertos += 1
+                    elif letra != ' _ ':
+                        pass
+                    else:
+                        self.digitada[num] = ' _ '
+            junta = ''.join(self.digitada).upper()
+            self.labPalavra.setText(junta)
+            self.exibe()
+
             if self.erros == 6:
                 self.resultado(ganhou=False)
+            if self.acertos == len(self.palavra):
+                self.resultado()
 
     def exibe(self):
-
-        self.labPalavra.setText(str(funcoes.exibir(funcoes.digitadas(self.palavra))))
         self.labErros.setText('Erros = ' + (str(self.erros)))
         self.labForca.setText(str(boneco.forca(self.erros)))
 
     def resultado(self, ganhou=True):
-        box = QMessageBox()
-        box.setWindowTitle('Jogo da Forca')
+        boxr = QMessageBox()
+        boxr.setWindowTitle('Jogo da Forca')
+        boxr.setGeometry(600, 400, 500, 100)
+        boxr.setFixedSize(280, 100)
         if ganhou:
-            box.setText('Voce ganhou! Quer jogar de novo?')
+            boxr.setText('Voce ganhou! Quer jogar de novo?')
         else:
-            box.setText(f'Voce perdeu! A palavra era: {self.palavra}   Quer jogar de novo?')
-        box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        btn_s = box.button(QMessageBox.Yes)
+            boxr.setText(f'Voce perdeu! A palavra era: {self.palavra.upper()}\nQuer jogar de novo?')
+        boxr.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        btn_s = boxr.button(QMessageBox.Yes)
         btn_s.setText('Sim')
-        btn_n = box.button(QMessageBox.No)
+        btn_n = boxr.button(QMessageBox.No)
         btn_n.setText('Não')
-        box.exec_()
+        boxr.exec_()
 
-        if box.clickedButton() == btn_s:
+        if boxr.clickedButton() == btn_s:
             self.reinicia()
-        if box.clickedButton() == btn_n:
+        if boxr.clickedButton() == btn_n:
             sys.exit()
 
     def funcao_palavra(self):
 
         boxp = QDialog()
         boxp.setWindowTitle('Palavra')
-        boxp.setFixedSize(500, 100)
+        boxp.setGeometry(560, 400, 500, 100)
+        boxp.setFixedSize(330, 100)
         boxp.label = QLabel('Digite uma palavra sem que os jogadores vejam: ', boxp)
         boxp.texto = QLineEdit(boxp)
         boxp.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
