@@ -2,11 +2,12 @@ import functools
 import sys
 import os
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QRegExp
+from PyQt5.QtGui import QRegExpValidator
 
 
 from Jogo_da_forca1 import boneco
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QLineEdit, QDialog, QDialogButtonBox, \
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QDialog, QDialogButtonBox, \
     QFormLayout, QLabel
 from Jogo_da_forca1 import design_jogo_da_forca
 
@@ -75,7 +76,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
             self.labPalavra.setText(junta)
             self.exibe()
 
-            if self.erros == 6:
+            if self.erros >= 6:
                 self.resultado(ganhou=False)
             if self.acertos == len(self.palavra):
                 self.resultado()
@@ -85,37 +86,43 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
         self.labForca.setText(str(boneco.forca(self.erros)))
 
     def resultado(self, ganhou=True):
-        boxr = QMessageBox()
+        boxr = QDialog()
         boxr.setWindowTitle('Jogo da Forca')
         boxr.setGeometry(600, 400, 500, 100)
-        boxr.setFixedSize(280, 100)
+        boxr.setFixedSize((240 + len(self.palavra*8)), 85)
+
         if ganhou:
-            boxr.setText('Voce ganhou! Quer jogar de novo?')
+            boxr.label = QLabel('Você ganhou! \nQuer jogar de novo?')
         else:
-            boxr.setText(f'Voce perdeu! A palavra era: {self.palavra.upper()}\nQuer jogar de novo?')
-        boxr.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        btn_s = boxr.button(QMessageBox.Yes)
-        btn_s.setText('Sim')
-        btn_n = boxr.button(QMessageBox.No)
-        btn_n.setText('Não')
+            boxr.label = QLabel(f'Voce perdeu! A palavra era: {self.palavra.upper()}\nQuer jogar de novo?')
+        boxr.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        boxr.btn.button(QDialogButtonBox.Ok).setText("Sim")
+        boxr.btn.button(QDialogButtonBox.Cancel).setText("Não")
+        boxr.btn.accepted.connect(self.reinicia)
+        boxr.btn.rejected.connect(sys.exit)
+
+        boxr.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+        layout = QFormLayout()
+        layout.addWidget(boxr.label)
+        layout.addWidget(boxr.btn)
+        boxr.setLayout(layout)
         boxr.exec_()
 
-        if boxr.clickedButton() == btn_s:
-            self.reinicia()
-        if boxr.clickedButton() == btn_n:
-            sys.exit()
-
     def funcao_palavra(self):
-
         boxp = QDialog()
         boxp.setWindowTitle('Palavra')
         boxp.setGeometry(560, 400, 500, 100)
         boxp.setFixedSize(330, 100)
         boxp.label = QLabel('Digite uma palavra sem que os jogadores vejam: ', boxp)
         boxp.texto = QLineEdit(boxp)
+        regex = QRegExp(r'[(a-zA-Zà-úÀ-Ú)]+')
+        valida = QRegExpValidator(regex)
+        boxp.texto.setValidator(valida)
         boxp.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        boxp.btn.button(QDialogButtonBox.Ok).setText("Confirma")
+        boxp.btn.button(QDialogButtonBox.Cancel).setText("Cancelar")
         boxp.btn.accepted.connect(boxp.accept)
-        boxp.btn.rejected.connect(self.fechar)
+        boxp.btn.rejected.connect(sys.exit)
         boxp.btn.button(QDialogButtonBox.Ok).setEnabled(False)
         boxp.texto.textChanged.connect(
             lambda text: boxp.btn.button(QDialogButtonBox.Ok).setEnabled(True) if text
@@ -126,20 +133,18 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca, QDialog):
         layout.addWidget(boxp.label)
         layout.addWidget(boxp.texto)
         layout.addWidget(boxp.btn)
-
         boxp.setLayout(layout)
         boxp.exec_()
-
-        return boxp.texto.text().lower().strip().replace(' ', '').replace('-', '')
-
-    @staticmethod
-    def fechar():
-        sys.exit()
+        return boxp.texto.text().lower().strip().replace(' ', '')
 
     @staticmethod
     def reinicia():
         python = sys.executable
         os.execl(python, python, *sys.argv)
+
+    # def keyPressEvent(self, event):
+    #     if event.key() == Qt.Key_Escape:
+    #         sys.exit()
 
 
 if __name__ == '__main__':
