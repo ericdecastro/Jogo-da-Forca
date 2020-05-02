@@ -2,16 +2,37 @@
 <ui version="4.0">
  <class>JogodaForca</class>
  <widget class="QMainWindow" name="JogodaForca">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>834</width>
-    <height>555</height>
+    <width>923</width>
+    <height>614</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Jogo da Forca</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="labForca">
@@ -25,9 +46,18 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
-      <italic>true</italic>
+      <family>Century Schoolbook L</family>
+      <pointsize>19</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>forca</string>
@@ -48,6 +78,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>erros</string>
     </property>
@@ -55,17 +88,23 @@
    <widget class="QPushButton" name="btnA">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>446</y>
-      <width>45</width>
-      <height>28</height>
+      <x>10</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>A</string>
@@ -74,17 +113,24 @@
    <widget class="QPushButton" name="btnB">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>80</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>B</string>
@@ -93,17 +139,24 @@
    <widget class="QPushButton" name="btnG">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>430</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>G</string>
@@ -112,17 +165,24 @@
    <widget class="QPushButton" name="btnF">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>446</y>
-      <width>45</width>
-      <height>28</height>
+      <x>360</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>F</string>
@@ -131,17 +191,24 @@
    <widget class="QPushButton" name="btnC">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>446</y>
-      <width>45</width>
-      <height>28</height>
+      <x>150</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>C</string>
@@ -150,17 +217,24 @@
    <widget class="QPushButton" name="btnD">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>220</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>D</string>
@@ -169,17 +243,24 @@
    <widget class="QPushButton" name="btnE">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>290</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>E</string>
@@ -188,17 +269,24 @@
    <widget class="QPushButton" name="btnH">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>446</y>
-      <width>45</width>
-      <height>28</height>
+      <x>500</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>H</string>
@@ -207,17 +295,24 @@
    <widget class="QPushButton" name="btnO">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>80</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>O</string>
@@ -226,17 +321,24 @@
    <widget class="QPushButton" name="btnN">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>480</y>
-      <width>45</width>
-      <height>28</height>
+      <x>10</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>N</string>
@@ -245,17 +347,24 @@
    <widget class="QPushButton" name="btnL">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>780</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>L</string>
@@ -264,17 +373,24 @@
    <widget class="QPushButton" name="btnM">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>850</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>M</string>
@@ -283,17 +399,24 @@
    <widget class="QPushButton" name="btnP">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>480</y>
-      <width>45</width>
-      <height>28</height>
+      <x>150</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>P</string>
@@ -302,17 +425,24 @@
    <widget class="QPushButton" name="btnJ">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>640</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>J</string>
@@ -321,17 +451,24 @@
    <widget class="QPushButton" name="btnK">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>446</y>
-      <width>45</width>
-      <height>28</height>
+      <x>710</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>K</string>
@@ -340,17 +477,24 @@
    <widget class="QPushButton" name="btnI">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>446</y>
-      <width>44</width>
-      <height>28</height>
+      <x>570</x>
+      <y>430</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>I</string>
@@ -359,17 +503,24 @@
    <widget class="QPushButton" name="btnW">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>640</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>W</string>
@@ -378,17 +529,24 @@
    <widget class="QPushButton" name="btnV">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>570</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>V</string>
@@ -397,17 +555,24 @@
    <widget class="QPushButton" name="btnT">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>430</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>T</string>
@@ -416,17 +581,24 @@
    <widget class="QPushButton" name="btnU">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>480</y>
-      <width>45</width>
-      <height>28</height>
+      <x>500</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>U</string>
@@ -435,17 +607,24 @@
    <widget class="QPushButton" name="btnX">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>480</y>
-      <width>45</width>
-      <height>28</height>
+      <x>710</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>X</string>
@@ -454,17 +633,24 @@
    <widget class="QPushButton" name="btnR">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>290</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>R</string>
@@ -473,17 +659,24 @@
    <widget class="QPushButton" name="btnS">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>480</y>
-      <width>45</width>
-      <height>28</height>
+      <x>360</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>S</string>
@@ -492,17 +685,24 @@
    <widget class="QPushButton" name="btnY">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>780</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>Y</string>
@@ -511,17 +711,24 @@
    <widget class="QPushButton" name="btnQ">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>220</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>Q</string>
@@ -530,17 +737,24 @@
    <widget class="QPushButton" name="btnZ">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>480</y>
-      <width>44</width>
-      <height>28</height>
+      <x>850</x>
+      <y>490</y>
+      <width>60</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Century Schoolbook L</family>
       <pointsize>16</pointsize>
-      <italic>true</italic>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png&quot;);
+color: rgba(80,45,22,250);</string>
     </property>
     <property name="text">
      <string>Z</string>
@@ -549,8 +763,8 @@
    <widget class="QLabel" name="labPalavra">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>360</y>
+      <x>380</x>
+      <y>350</y>
       <width>501</width>
       <height>31</height>
      </rect>
@@ -561,21 +775,36 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
      <string>palavra</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labLetra">
+   <widget class="QLabel" name="labDica">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>90</y>
-      <width>71</width>
-      <height>41</height>
+      <x>370</x>
+      <y>160</y>
+      <width>441</width>
+      <height>91</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
     <property name="text">
-     <string/>
+     <string>dica</string>
     </property>
    </widget>
   </widget>
@@ -584,7 +813,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>834</width>
+     <width>923</width>
      <height>22</height>
     </rect>
    </property>

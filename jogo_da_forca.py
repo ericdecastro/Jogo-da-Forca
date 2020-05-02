@@ -2,6 +2,7 @@ import functools
 import sys
 import os
 
+from PyQt5.QtMultimedia import QSound
 from PyQt5.QtCore import Qt, QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtWidgets import QPushButton
@@ -19,8 +20,8 @@ class Palavra(QDialog):
         super().__init__(parent)
         self.palavraescolhida = ''
         self.setWindowTitle('Palavra')
-        self.setGeometry(450, 390, 500, 100)
-        self.setFixedSize(530, 150)
+        self.setGeometry(465, 390, 500, 100)
+        self.setFixedSize(510, 150)
         self.label1 = QLabel('Se estiver jogando sozinho, clique para sortear uma palavra: ', self)
         self.label2 = QLabel('Se estiver jogando com amigos, digite uma palavra sem que os jogadores vejam: ', self)
         self.texto = QLineEdit(self)
@@ -68,8 +69,13 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
-        self.setFixedSize(840, 540)
+        self.setFixedSize(920, 580)
+        # self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+        self.musica = QSound('musica.wav')
+        # self.musica.play()
         self.erros = 0
+        self.erro = QSound('buzzer.wav')
+        # self.acerto = QSound('')
         self.acertos = 0
         self.show()
         self.labPalavra.setText('')
@@ -147,6 +153,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.labPalavra.setText(junta)
         if not acertou:
             self.erros += 1
+            self.erro.play()
         self.exibe()
 
         if self.acertos == len(JogoDaForca.palavra):
