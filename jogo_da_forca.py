@@ -3,9 +3,9 @@ import sys
 import os
 
 from PyQt5.QtMultimedia import QSound
-from PyQt5.QtCore import Qt, QRegExp
-from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtCore import Qt, QRegExp, QRect
+from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
+from PyQt5.QtWidgets import QPushButton, QWidget, QGridLayout
 from Jogo_da_forca1 import boneco
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QDialog, QDialogButtonBox, \
     QFormLayout, QLabel
@@ -15,42 +15,124 @@ from random import choice
 listapalavras = ['casa', 'bola', 'quarto', 'música', 'abraço', 'viagem', 'violão', 'porta', 'geladeira']
 
 
-class Palavra(QDialog):
+# class Palavra(QDialog):
+#     def __init__(self, parent=None):
+#         super().__init__(parent)
+#         self.palavraescolhida = ''
+#         self.setWindowTitle('Palavra')
+#         self.setGeometry(465, 390, 500, 100)
+#         self.setFixedSize(600, 300)
+#         # self.setStyleSheet(
+#         #     "border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundomadeira.png\");\n"
+#         #     "color: rgba(80,45,22,250);")
+#         self.label1 = QLabel('Se estiver jogando sozinho, clique para sortear uma palavra: ', self)
+#         self.label2 = QLabel('Se estiver jogando com amigos, digite uma palavra sem que os jogadores vejam: ', self)
+#         self.texto = QLineEdit(self)
+#         regex = QRegExp(r'[(a-zA-Zà-úÀ-Ú)]+')
+#         valida = QRegExpValidator(regex)
+#         self.texto.setValidator(valida)
+#         self.btnsortear = QPushButton('Sortear', self)
+#         self.btnsortear.resize(200,200)
+#         # self.btnsortear.setStyleSheet(
+#         #     "border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png\");\n"
+#         #     "color: rgba(80,45,22,250);")
+#         self.btnsortear.clicked.connect(self.sorteio)
+#         self.btnsortear.clicked.connect(self.accept)
+#         self.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+#         self.btn.button(QDialogButtonBox.Ok).setText("Confirma")
+#         self.btn.button(QDialogButtonBox.Cancel).setText("Sair")
+#         self.btn.accepted.connect(self.digitada)
+#         self.btn.accepted.connect(self.accept)
+#         self.btn.rejected.connect(sys.exit)
+#         self.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+#         self.texto.textChanged.connect(
+#             lambda text: self.btn.button(QDialogButtonBox.Ok).setEnabled(True) if text
+#             else self.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+#         )
+#         self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+#         layout = QFormLayout()
+#         layout.addWidget(self.label1)
+#         layout.addWidget(self.btnsortear)
+#         layout.addWidget(self.label2)
+#         layout.addWidget(self.texto)
+#         layout.addWidget(self.btn)
+#         self.setLayout(layout)
+#         self.exec_()
+#
+#     def digitada(self):
+#         self.palavraescolhida = self.texto.text().lower().strip().replace(' ', '')
+#
+#     def sorteio(self):
+#         self.palavraescolhida = choice(listapalavras).lower().strip().replace(' ', '')
+#
+#     def keyPressEvent(self, event):
+#         if event.key() == Qt.Key_Escape:
+#             pass
+
+class Palavra(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.palavraescolhida = ''
         self.setWindowTitle('Palavra')
         self.setGeometry(465, 390, 500, 100)
-        self.setFixedSize(510, 150)
-        self.label1 = QLabel('Se estiver jogando sozinho, clique para sortear uma palavra: ', self)
-        self.label2 = QLabel('Se estiver jogando com amigos, digite uma palavra sem que os jogadores vejam: ', self)
-        self.texto = QLineEdit(self)
+        self.setFixedSize(520, 220)
+        # self.setWindowFlags(Qt.FramelessWindowHint)
+        self.cw = QWidget()
+        self.grid = QGridLayout(self.cw)
+        self.setCentralWidget(self.cw)
+
+        self.font = QFont()
+        self.font.setFamily("Century Schoolbook L")
+        self.font.setPointSize(12)
+        self.font.setBold(True)
+        self.font.setWeight(75)
+
+        self.label1 = QLabel('Se estiver jogando sozinho, clique para sortear uma palavra: ', self.cw)
+        self.label1.setGeometry(QRect(10, 30, 500, 20))
+
+        self.label2 = QLabel('Se estiver jogando com amigos, digite uma palavra sem que os jogadores vejam: ', self.cw)
+        self.label2.setGeometry(QRect(10, 80, 500, 20))
+
+        self.texto = QLineEdit(self.cw)
+        self.texto.setGeometry(QRect(10, 100, 500, 20))
         regex = QRegExp(r'[(a-zA-Zà-úÀ-Ú)]+')
         valida = QRegExpValidator(regex)
         self.texto.setValidator(valida)
-        self.btnsortear = QPushButton('Sortear')
-        self.btnsortear.clicked.connect(self.sorteio)
-        self.btnsortear.clicked.connect(self.accept)
-        self.btn = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
-        self.btn.button(QDialogButtonBox.Ok).setText("Confirma")
-        self.btn.button(QDialogButtonBox.Cancel).setText("Sair")
-        self.btn.accepted.connect(self.digitada)
-        self.btn.accepted.connect(self.accept)
-        self.btn.rejected.connect(sys.exit)
-        self.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+
+        self.btnSortear = QPushButton('Sortear', self.cw)
+        self.btnSortear.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnSortear.setFont(self.font)
+        self.btnSortear.setGeometry(QRect(400, 10, 100, 60))
+        self.btnSortear.setStyleSheet(
+            "border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png\");\n"
+            "color: rgba(80,45,22,250);")
+        self.btnSortear.clicked.connect(self.sorteio)
+        # self.btnsortear.clicked.connect()
+
+        self.btnOk = QPushButton('Confirma', self.cw)
+        self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnOk.setFont(self.font)
+        self.btnOk.setGeometry(QRect(400, 150, 100, 60))
+        self.btnOk.setStyleSheet(
+            "border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png\");\n"
+            "color: rgba(80,45,22,250);")
+        self.btnOk.clicked.connect(self.digitada)
+        self.btnOk.setEnabled(False)
         self.texto.textChanged.connect(
-            lambda text: self.btn.button(QDialogButtonBox.Ok).setEnabled(True) if text
-            else self.btn.button(QDialogButtonBox.Ok).setEnabled(False)
+            lambda text: self.btnOk.setEnabled(True) if text
+            else self.btnOk.setEnabled(False)
         )
-        self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
-        layout = QFormLayout()
-        layout.addWidget(self.label1)
-        layout.addWidget(self.btnsortear)
-        layout.addWidget(self.label2)
-        layout.addWidget(self.texto)
-        layout.addWidget(self.btn)
-        self.setLayout(layout)
-        self.exec_()
+
+        self.btnCancela = QPushButton('Sair', self.cw)
+        self.btnCancela.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnCancela.setFont(self.font)
+        self.btnCancela.setGeometry(QRect(290, 150, 100, 60))
+        self.btnCancela.setStyleSheet(
+            "border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/botaoletra.png\");\n"
+            "color: rgba(80,45,22,250);")
+        self.btnCancela.clicked.connect(sys.exit)
+
+        self.show()
 
     def digitada(self):
         self.palavraescolhida = self.texto.text().lower().strip().replace(' ', '')
@@ -69,8 +151,8 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
-        self.setFixedSize(920, 580)
-        # self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
+        self.setFixedSize(920, 625)
+        self.setWindowFlags(Qt.FramelessWindowHint)
         self.musica = QSound('musica.wav')
         # self.musica.play()
         self.erros = 0
@@ -84,6 +166,9 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.digitada = [' _ '] * len(JogoDaForca.palavra)
         self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
         self.exibe()
+        self.btnFecha.clicked.connect(sys.exit)
+        self.btnMini.clicked.connect(self.showMinimized)
+
         self.btnA.clicked.connect(functools.partial(self.clica_botao, self.btnA))
         self.btnB.clicked.connect(functools.partial(self.clica_botao, self.btnB))
         self.btnC.clicked.connect(functools.partial(self.clica_botao, self.btnC))
@@ -110,6 +195,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.btnX.clicked.connect(functools.partial(self.clica_botao, self.btnX))
         self.btnY.clicked.connect(functools.partial(self.clica_botao, self.btnY))
         self.btnZ.clicked.connect(functools.partial(self.clica_botao, self.btnZ))
+
 
     def clica_botao(self, btn):
         acertou = False
@@ -153,7 +239,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.labPalavra.setText(junta)
         if not acertou:
             self.erros += 1
-            self.erro.play()
+            # self.erro.play()
         self.exibe()
 
         if self.acertos == len(JogoDaForca.palavra):
