@@ -410,7 +410,7 @@ class Ui_JogodaForca(object):
         self.btnSom.setText("")
         self.btnSom.setObjectName("btnSom")
         self.labErros = QtWidgets.QLabel(self.centralwidget)
-        self.labErros.setGeometry(QtCore.QRect(10, 10, 130, 81))
+        self.labErros.setGeometry(QtCore.QRect(10, 10, 130, 75))
         font = QtGui.QFont()
         font.setFamily("Century Schoolbook L")
         font.setPointSize(13)
@@ -418,7 +418,7 @@ class Ui_JogodaForca(object):
         font.setWeight(75)
         self.labErros.setFont(font)
         self.labErros.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.labErros.setStyleSheet("border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/moldura2.png\");\n"
+        self.labErros.setStyleSheet("border-image:url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/moldura.png\");\n"
 "color: rgba(80,45,22,250);")
         self.labErros.setLineWidth(1)
         self.labErros.setText("")
@@ -432,8 +432,9 @@ class Ui_JogodaForca(object):
         self.labForca.setText("")
         self.labForca.setObjectName("labForca")
         self.lblFundo = QtWidgets.QLabel(self.centralwidget)
-        self.lblFundo.setGeometry(QtCore.QRect(0, 0, 1041, 471))
+        self.lblFundo.setGeometry(QtCore.QRect(0, 0, 1051, 471))
         self.lblFundo.setStyleSheet("border-image: url(\"/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/praça.png\")")
+        self.lblFundo.setText("")
         self.lblFundo.setObjectName("lblFundo")
         self.lblFundo.raise_()
         self.widgetFundo.raise_()
@@ -511,5 +512,4 @@ class Ui_JogodaForca(object):
         self.btnQ.setText(_translate("JogodaForca", "Q"))
         self.btnZ.setText(_translate("JogodaForca", "Z"))
         self.labPalavra.setText(_translate("JogodaForca", "palavra"))
-        self.lblFundo.setText(_translate("JogodaForca", "TextLabel"))
 

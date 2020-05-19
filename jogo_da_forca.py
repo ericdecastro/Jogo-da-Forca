@@ -2,7 +2,7 @@ import functools
 import sys
 import os
 
-from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent
+from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
 from PyQt5.QtWidgets import QPushButton, QDialog
@@ -74,27 +74,29 @@ class Palavra(QDialog):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.palavraescolhida = ''
         self.setWindowTitle('Palavra')
-        self.setGeometry(410, 200, 620, 390)
-        self.setFixedSize(620, 390)
+        self.setGeometry(410, 200, 620, 480)
+        self.setFixedSize(620, 480)
         self.setObjectName('palavra')
         self.setStyleSheet(
             'QWidget#palavra { background-image: url("fundomadeira.png")}')
+        self.intro = QSound('intro.wav')
+        self.intro.play()
 
         self.label1 = QLabel('        Se estiver jogando sozinho clique para sortear uma palavra: ', self)
         self.label1.setFont(font2)
-        self.label1.setGeometry(QRect(10, 15, 600, 60))
+        self.label1.setGeometry(QRect(10, 110, 600, 60))
         self.label1.setStyleSheet(estilofundotexto)
 
         self.label2 = QLabel('                Se estiver jogando com amigos digite uma palavra\n '
                              '                         sem que os outros jogadores vejam:', self)
         self.label2.setFont(font2)
-        self.label2.setGeometry(QRect(10, 170, 600, 80))
+        self.label2.setGeometry(QRect(10, 260, 600, 80))
         self.label2.setStyleSheet(estilofundotexto)
 
         self.btnSortear = QPushButton('Sortear', self)
         self.btnSortear.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnSortear.setFont(font)
-        self.btnSortear.setGeometry(QRect(240, 90, 140, 60))
+        self.btnSortear.setGeometry(QRect(240, 185, 140, 60))
         self.btnSortear.setStyleSheet(estilobtnligado)
         self.btnSortear.clicked.connect(self.sorteio)
         self.btnSortear.clicked.connect(self.hide)
@@ -103,7 +105,7 @@ class Palavra(QDialog):
         self.btnSortear.clicked.connect(functools.partial(clica_botao, self.btnSortear, 139, 59, estilobtndesligado))
 
         self.texto = QLineEdit(self)
-        self.texto.setGeometry(QRect(70, 260, 480, 30))
+        self.texto.setGeometry(QRect(70, 355, 480, 30))
         self.texto.setStyleSheet(
             "font-size: 16px;"
         )
@@ -122,7 +124,7 @@ class Palavra(QDialog):
         self.btnCancela = QPushButton('Sair', self)
         self.btnCancela.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnCancela.setFont(font)
-        self.btnCancela.setGeometry(QRect(170, 310, 140, 60))
+        self.btnCancela.setGeometry(QRect(170, 405, 140, 60))
         self.btnCancela.setStyleSheet(estilobtnligado)
         self.btnCancela.clicked.connect(sys.exit)
         self.btnCancela.pressed.connect(functools.partial(aperta_botao, self.btnCancela, 139, 59, estilobtndesligado))
@@ -132,7 +134,7 @@ class Palavra(QDialog):
         self.btnOk = QPushButton('Confirma', self)
         self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnOk.setFont(font)
-        self.btnOk.setGeometry(QRect(330, 310, 140, 60))
+        self.btnOk.setGeometry(QRect(330, 405, 140, 60))
         self.btnOk.setStyleSheet(estilobtndesligado)
         self.btnOk.clicked.connect(self.digitada)
         self.btnOk.clicked.connect(self.hide)
@@ -164,8 +166,8 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.som = True
         self.erros = 0
-        self.erro = QSound('buzzer.wav')
-        # self.acerto = QSound('')
+        self.erro = QSound('errou.wav')
+        self.acerto = QSound('acertou.wav')
         self.acertos = 0
         self.show()
         self.labPalavra.setText('')
@@ -179,9 +181,12 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
         self.exibe()
 
-        self.player = QMediaPlayer()
-        self.player.setMedia(QMediaContent(
+        self.playlist = QMediaPlaylist()
+        self.playlist.addMedia(QMediaContent(
             QUrl.fromLocalFile('/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/musica.wav')))
+        self.playlist.setPlaybackMode(QMediaPlaylist.Loop)
+        self.player = QMediaPlayer()
+        self.player.setPlaylist(self.playlist)
         self.player.play()
 
         self.btnSom.clicked.connect(self.somligadesliga)
@@ -358,7 +363,6 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
                 self.digitada[num] = f' {letra} '
                 self.acertos += 1
                 acertou = True
-                print(self.acertos)
             elif letra != ' _ ':
                 pass
             else:
@@ -370,11 +374,15 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
             self.erros += 1
             if self.som:
                 self.erro.play()
+        else:
+            self.acerto.play()
         self.exibe()
 
         if self.acertos == len(JogoDaForca.palavra):
+            self.player.stop()
             JogoDaForca.resultado = Resultado()
         if self.erros >= 6:
+            self.player.stop()
             JogoDaForca.resultado = Resultado(ganhou=False)
 
     def exibe(self):
@@ -430,6 +438,8 @@ class Resultado(QDialog):
         self.btnCancela.clicked.connect(functools.partial(clica_botao, self.btnCancela, 99, 59, estilobtndesligado))
 
         if ganhou:
+            self.ganhou = QSound('ganhou.wav')
+            self.ganhou.play()
             self.setGeometry(580, 320, 280, 200)
             self.label = QLabel('          Você ganhou! \n    Quer jogar de novo?', self)
             self.label.setGeometry(QRect(30, 5, 220, 80))
@@ -439,6 +449,8 @@ class Resultado(QDialog):
         else:
             self.label = QLabel(f'     Voce perdeu! A palavra era:\n     '
                                 f'{self.palavra.upper()}\n     Quer jogar de novo?', self)
+            self.perdeu = QSound('perdeu.wav')
+            self.perdeu.play()
             if len(self.palavra) > 20:
                 self.setGeometry(500, 300, 440, 200)
                 self.label.setGeometry(QRect(10, 0, 420, 120))

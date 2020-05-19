@@ -925,7 +925,7 @@ color: rgba(80,45,22,250);</string>
       <x>10</x>
       <y>10</y>
       <width>130</width>
-      <height>81</height>
+      <height>75</height>
      </rect>
     </property>
     <property name="font">
@@ -940,7 +940,7 @@ color: rgba(80,45,22,250);</string>
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/moldura2.png&quot;);
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/moldura.png&quot;);
 color: rgba(80,45,22,250);</string>
     </property>
     <property name="lineWidth">
@@ -981,7 +981,7 @@ color: rgba(80,45,22,250);</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1041</width>
+      <width>1051</width>
       <height>471</height>
      </rect>
     </property>
@@ -989,7 +989,7 @@ color: rgba(80,45,22,250);</string>
      <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/praça.png&quot;)</string>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
    <zorder>lblFundo</zorder>
