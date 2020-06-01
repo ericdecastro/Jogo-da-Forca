@@ -7,11 +7,10 @@ from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
 from PyQt5.QtWidgets import QPushButton, QDialog
 from Jogo_da_forca1 import boneco
+from Jogo_da_forca1 import listadepalavras
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
 from Jogo_da_forca1 import design_jogo_da_forca
-from random import choice
-
-listapalavras = ['casa', 'bola', 'quarto', 'música', 'abraço', 'viagem', 'violão', 'porta', 'geladeira']
+from random import sample
 
 font = QFont()
 font.setFamily("Century Schoolbook L")
@@ -24,6 +23,12 @@ font2.setFamily("Century Schoolbook L")
 font2.setPointSize(13)
 font2.setBold(True)
 font2.setWeight(75)
+
+font3 = QFont()
+font3.setFamily("Century Schoolbook L")
+font3.setPointSize(10)
+font3.setBold(True)
+font3.setWeight(75)
 
 estilobtndesligado = ("border-image:url(\"botaodesativado.png\");\n"
                       "color: rgba(80,45,22,200);")
@@ -69,20 +74,22 @@ def clica_botao(btn, width, height, estilo, letra=False):
 
 
 class Palavra(QDialog):
+    palavrasescolhidas = ''
+    categoria = ''
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
-        self.palavraescolhida = ''
-        self.setWindowTitle('Palavra')
-        self.setGeometry(410, 200, 620, 480)
-        self.setFixedSize(620, 480)
+        self.setWindowTitle('Jogo da Forca')
+        self.setGeometry(400, 150, 620, 480)
+        self.setFixedSize(620, 580)
         self.setObjectName('palavra')
         self.setStyleSheet(
             'QWidget#palavra { background-image: url("fundomadeira.png")}')
         self.intro = QSound('intro.wav')
-        self.intro.play()
+        # self.intro.play()
 
-        self.label1 = QLabel('        Se estiver jogando sozinho clique para sortear uma palavra: ', self)
+        self.label1 = QLabel('                Se estiver jogando sozinho escolha uma categoria: ', self)
         self.label1.setFont(font2)
         self.label1.setGeometry(QRect(10, 110, 600, 60))
         self.label1.setStyleSheet(estilofundotexto)
@@ -90,22 +97,55 @@ class Palavra(QDialog):
         self.label2 = QLabel('                Se estiver jogando com amigos digite uma palavra\n '
                              '                         sem que os outros jogadores vejam:', self)
         self.label2.setFont(font2)
-        self.label2.setGeometry(QRect(10, 260, 600, 80))
+        self.label2.setGeometry(QRect(10, 340, 600, 80))
         self.label2.setStyleSheet(estilofundotexto)
 
-        self.btnSortear = QPushButton('Sortear', self)
-        self.btnSortear.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btnSortear.setFont(font)
-        self.btnSortear.setGeometry(QRect(240, 185, 140, 60))
-        self.btnSortear.setStyleSheet(estilobtnligado)
-        self.btnSortear.clicked.connect(self.sorteio)
-        self.btnSortear.clicked.connect(self.hide)
-        self.btnSortear.pressed.connect(functools.partial(aperta_botao, self.btnSortear, 139, 59, estilobtndesligado))
-        self.btnSortear.released.connect(functools.partial(solta_botao, self.btnSortear, 140, 60, estilobtnligado))
-        self.btnSortear.clicked.connect(functools.partial(clica_botao, self.btnSortear, 139, 59, estilobtndesligado))
+        self.btnObj = QPushButton('Objetos', self)
+        self.btnObj.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnObj.setFont(font)
+        self.btnObj.setGeometry(QRect(120, 180, 140, 60))
+        self.btnObj.setStyleSheet(estilobtnligado)
+        self.btnObj.clicked.connect(functools.partial(self.sorteio, 'Objetos'))
+        self.btnObj.clicked.connect(self.hide)
+        self.btnObj.pressed.connect(functools.partial(aperta_botao, self.btnObj, 139, 59, estilobtndesligado))
+        self.btnObj.released.connect(functools.partial(solta_botao, self.btnObj, 140, 60, estilobtnligado))
+        self.btnObj.clicked.connect(functools.partial(clica_botao, self.btnObj, 139, 59, estilobtndesligado))
+
+        self.btnProf = QPushButton('Profissões', self)
+        self.btnProf.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnProf.setFont(font)
+        self.btnProf.setGeometry(QRect(350, 180, 140, 60))
+        self.btnProf.setStyleSheet(estilobtnligado)
+        self.btnProf.clicked.connect(functools.partial(self.sorteio, 'Profissões'))
+        self.btnProf.clicked.connect(self.hide)
+        self.btnProf.pressed.connect(functools.partial(aperta_botao, self.btnProf, 139, 59, estilobtndesligado))
+        self.btnProf.released.connect(functools.partial(solta_botao, self.btnProf, 140, 60, estilobtnligado))
+        self.btnProf.clicked.connect(functools.partial(clica_botao, self.btnProf, 139, 59, estilobtndesligado))
+
+        self.btnPais = QPushButton('Países', self)
+        self.btnPais.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnPais.setFont(font)
+        self.btnPais.setGeometry(QRect(120, 270, 140, 60))
+        self.btnPais.setStyleSheet(estilobtnligado)
+        self.btnPais.clicked.connect(functools.partial(self.sorteio, 'Países'))
+        self.btnPais.clicked.connect(self.hide)
+        self.btnPais.pressed.connect(functools.partial(aperta_botao, self.btnPais, 139, 59, estilobtndesligado))
+        self.btnPais.released.connect(functools.partial(solta_botao, self.btnPais, 140, 60, estilobtnligado))
+        self.btnPais.clicked.connect(functools.partial(clica_botao, self.btnPais, 139, 59, estilobtndesligado))
+
+        self.btnAni = QPushButton('Animais', self)
+        self.btnAni.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btnAni.setFont(font)
+        self.btnAni.setGeometry(QRect(350, 270, 140, 60))
+        self.btnAni.setStyleSheet(estilobtnligado)
+        self.btnAni.clicked.connect(functools.partial(self.sorteio, 'Animais'))
+        self.btnAni.clicked.connect(self.hide)
+        self.btnAni.pressed.connect(functools.partial(aperta_botao, self.btnAni, 139, 59, estilobtndesligado))
+        self.btnAni.released.connect(functools.partial(solta_botao, self.btnAni, 140, 60, estilobtnligado))
+        self.btnAni.clicked.connect(functools.partial(clica_botao, self.btnAni, 139, 59, estilobtndesligado))
 
         self.texto = QLineEdit(self)
-        self.texto.setGeometry(QRect(70, 355, 480, 30))
+        self.texto.setGeometry(QRect(70, 435, 480, 30))
         self.texto.setStyleSheet(
             "font-size: 16px;"
         )
@@ -124,7 +164,7 @@ class Palavra(QDialog):
         self.btnCancela = QPushButton('Sair', self)
         self.btnCancela.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnCancela.setFont(font)
-        self.btnCancela.setGeometry(QRect(170, 405, 140, 60))
+        self.btnCancela.setGeometry(QRect(120, 490, 140, 60))
         self.btnCancela.setStyleSheet(estilobtnligado)
         self.btnCancela.clicked.connect(sys.exit)
         self.btnCancela.pressed.connect(functools.partial(aperta_botao, self.btnCancela, 139, 59, estilobtndesligado))
@@ -134,10 +174,10 @@ class Palavra(QDialog):
         self.btnOk = QPushButton('Confirma', self)
         self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnOk.setFont(font)
-        self.btnOk.setGeometry(QRect(330, 405, 140, 60))
+        self.btnOk.setGeometry(QRect(350, 490, 140, 60))
         self.btnOk.setStyleSheet(estilobtndesligado)
-        self.btnOk.clicked.connect(self.digitada)
         self.btnOk.clicked.connect(self.hide)
+        self.btnOk.clicked.connect(self.usuario)
         self.btnOk.setEnabled(False)
         self.btnOk.pressed.connect(functools.partial(aperta_botao, self.btnOk, 139, 59, estilobtndesligado))
         self.btnOk.released.connect(functools.partial(solta_botao, self.btnOk, 140, 60, estilobtnligado))
@@ -145,11 +185,22 @@ class Palavra(QDialog):
 
         self.exec_()
 
-    def digitada(self):
-        self.palavraescolhida = self.texto.text().lower().strip().replace(' ', '')
+    def usuario(self):
+        Palavra.palavrasescolhidas = list(self.texto.text())
 
-    def sorteio(self):
-        self.palavraescolhida = choice(listapalavras).lower().strip().replace(' ', '')
+    def sorteio(self, categoria):
+        if categoria == 'Animais':
+            Palavra.palavrasescolhidas = sample(listadepalavras.animais, 3)
+            Palavra.categoria = 'Animais'
+        if categoria == 'Objetos':
+            Palavra.palavrasescolhidas = sample(listadepalavras.objetos, 3)
+            Palavra.categoria = 'Objetos'
+        if categoria == 'Profissões':
+            Palavra.palavrasescolhidas = sample(listadepalavras.profissoes, 3)
+            Palavra.categoria = 'Profissões'
+        if categoria == 'Países':
+            Palavra.palavrasescolhidas = sample(listadepalavras.paises, 3)
+            Palavra.categoria = 'Países'
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Escape:
@@ -172,13 +223,31 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.show()
         self.labPalavra.setText('')
         self.exibe()
-        JogoDaForca.palavra = Palavra().palavraescolhida
-        if len(JogoDaForca.palavra) > 18:
-            self.labPalavra.setStyleSheet(
-                f"{estilofundotexto}"
-                "font-size: 14px")
-        self.digitada = [' _ '] * len(JogoDaForca.palavra)
-        self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
+        self.labCategoria.setText(Palavra.categoria)
+        JogoDaForca.palavra = Palavra.palavrasescolhidas
+
+        if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
+
+            self.digitada = [
+                self.ver_palavra(0),
+                self.ver_palavra(1),
+                self.ver_palavra(2)
+            ]
+
+            self.labPalavra.setText(''.join(self.digitada[0]))
+            self.labPalavra2.setText(''.join(self.digitada[1]))
+            self.labPalavra3.setText(''.join(self.digitada[2]))
+        else:
+            self.labPalavra2.setHidden(True)
+            self.labPalavra3.setHidden(True)
+            self.labCategoria.setHidden(True)
+            self.digitada = [' _ '] * len(JogoDaForca.palavra)
+            self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
+            self.labPalavra.setGeometry(300, 387, 660, 61)
+            if len(JogoDaForca.palavra) > 20:
+                self.labPalavra.setFont(font3)
+                self.labPalavra.setGeometry(300, 387, 660, 61)
+
         self.exibe()
 
         self.playlist = QMediaPlaylist()
@@ -189,7 +258,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.player.setPlaylist(self.playlist)
         self.player.play()
 
-        self.btnSom.clicked.connect(self.somligadesliga)
+        self.btnSom.clicked.connect(self.som_liga_desliga)
         self.btnSom.pressed.connect(functools.partial(clica_botao, self.btnSom, 59, 59, estilosomligadoapertado))
         self.btnSom.released.connect(functools.partial(solta_botao, self.btnSom, 60, 60, estilosomligado))
 
@@ -334,62 +403,128 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
 
     def verifica_letra(self, btn):
         acertou = False
-        for num, letra in enumerate(JogoDaForca.palavra):
-            if btn.text().lower() == letra:
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'c' and letra in 'ç':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'a' and letra in 'áãâ':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'e' and letra in 'éê':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'i' and letra in 'í':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'o' and letra in 'óõô':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif btn.text().lower() == 'u' and letra in 'ú':
-                self.digitada[num] = f' {letra} '
-                self.acertos += 1
-                acertou = True
-            elif letra != ' _ ':
-                pass
-            else:
-                self.digitada[num] = ' _ '
+        if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
+            for nump, palavra in enumerate(JogoDaForca.palavra):
+                for numl, letra in enumerate(palavra):
+                    if btn.text().lower() == letra:
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'c' and letra in 'ç':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'a' and letra in 'áãâ':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'e' and letra in 'éê':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'i' and letra in 'í':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'o' and letra in 'óõô':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'u' and letra in 'ú':
+                        self.digitada[nump][numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif letra != '_':
+                        pass
+                    else:
+                        self.digitada[nump][numl] = ' _ '
+        else:
 
-        junta = ''.join(self.digitada).upper()
-        self.labPalavra.setText(junta)
+            for numl, letra in enumerate(JogoDaForca.palavra):
+                    if btn.text().lower() == letra:
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'c' and letra in 'ç':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'a' and letra in 'áãâ':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'e' and letra in 'éê':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'i' and letra in 'í':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'o' and letra in 'óõô':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif btn.text().lower() == 'u' and letra in 'ú':
+                        self.digitada[numl] = f' {letra} '
+                        self.acertos += 1
+                        acertou = True
+                    elif letra != ' _ ':
+                        pass
+                    else:
+                        self.digitada[numl] = ' _ '
+
+        if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
+            junta = ''.join(self.digitada[0])
+            junta2 = ''.join(self.digitada[1])
+            junta3 = ''.join(self.digitada[2])
+            self.labPalavra.setText(junta.upper())
+            self.labPalavra2.setText(junta2.upper())
+            self.labPalavra3.setText(junta3.upper())
+        else:
+            junta = ''.join(self.digitada)
+            self.labPalavra.setText(junta.upper())
+
         if not acertou:
             self.erros += 1
             if self.som:
                 self.erro.play()
         else:
-            self.acerto.play()
+            if self.som:
+                self.acerto.play()
         self.exibe()
+        if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
+            if self.acertos == len(JogoDaForca.palavra[0]) + len(JogoDaForca.palavra[1]) + len(JogoDaForca.palavra[2]):
+                self.player.stop()
+                JogoDaForca.resultado = Resultado()
 
-        if self.acertos == len(JogoDaForca.palavra):
-            self.player.stop()
-            JogoDaForca.resultado = Resultado()
+        else:
+            if self.acertos == len(JogoDaForca.palavra):
+                self.player.stop()
+                JogoDaForca.resultado = Resultado()
+
         if self.erros >= 6:
             self.player.stop()
             JogoDaForca.resultado = Resultado(ganhou=False)
+
+    def ver_palavra(self, n):
+        palavraa = [' _ ']*len(JogoDaForca.palavra[n])
+        for num, letra in enumerate(JogoDaForca.palavra[n]):
+            if letra == '-':
+                palavraa[num] = ' - '
+                self.acertos += 1
+            elif letra == ' ':
+                palavraa[num] = '  '
+                self.acertos += 1
+            else:
+                pass
+        return palavraa
 
     def exibe(self):
         self.labErros.setText('Erros = ' + (str(self.erros)))
         self.labForca.setText(str(boneco.forca(self.erros)))
 
-    def somligadesliga(self):
+    def som_liga_desliga(self):
         if self.som:
             self.btnSom.setStyleSheet(estilosomdesligado)
             self.btnSom.pressed.connect(functools.partial(clica_botao, self.btnSom, 59, 59, estilosomdesligadoapertado))
@@ -447,22 +582,30 @@ class Resultado(QDialog):
             self.btnOk.setGeometry(QRect(150, 95, 100, 60))
             self.btnCancela.setGeometry(QRect(30, 95, 100, 60))
         else:
-            self.label = QLabel(f'     Voce perdeu! A palavra era:\n     '
-                                f'{self.palavra.upper()}\n     Quer jogar de novo?', self)
             self.perdeu = QSound('perdeu.wav')
             self.perdeu.play()
-            if len(self.palavra) > 20:
-                self.setGeometry(500, 300, 440, 200)
-                self.label.setGeometry(QRect(10, 0, 420, 120))
-                self.setFixedSize(440, 200)
-                self.btnOk.setGeometry(QRect(240, 130, 100, 60))
-                self.btnCancela.setGeometry(QRect(110, 130, 100, 60))
+            if len(self.palavra) == 3:
+                self.label = QLabel(f'    Você perdeu! As palavras eram:\n'
+                                    f'    {self.palavra[0].upper()}\n'
+                                    f'    {self.palavra[1].upper()}\n'
+                                    f'    {self.palavra[2].upper()}\n'
+                                    f'    Quer jogar de novo?', self)
+                self.setGeometry(540, 300, 380, 190)
+                self.label.setGeometry(QRect(10, 0, 340, 180))
+                self.setFixedSize(360, 260)
+                self.btnOk.setGeometry(QRect(200, 185, 100, 60))
+                self.btnCancela.setGeometry(QRect(70, 185, 100, 60))
             else:
-                self.setGeometry(560, 300, 280, 200)
-                self.label.setGeometry(QRect(10, 10, 300, 120))
-                self.setFixedSize(320, 210)
-                self.btnOk.setGeometry(QRect(170, 135, 100, 60))
-                self.btnCancela.setGeometry(QRect(50, 135, 100, 60))
+                self.palavra = ''.join(self.palavra)
+                self.label = QLabel(f'    Você perdeu! A palavra era:\n'
+                                    f'    {self.palavra.upper()}\n'
+                                    f'    Quer jogar de novo?', self)
+
+                self.setGeometry(540, 300, 380, 190)
+                self.label.setGeometry(QRect(10, 0, 340, 140))
+                self.setFixedSize(360, 230)
+                self.btnOk.setGeometry(QRect(200, 155, 100, 60))
+                self.btnCancela.setGeometry(QRect(70, 155, 100, 60))
 
         self.label.setWordWrap(True)
         self.label.setFont(font2)
@@ -482,5 +625,6 @@ class Resultado(QDialog):
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
+    palavras = Palavra()
     jogodaforca = JogoDaForca()
     qt.exec_()

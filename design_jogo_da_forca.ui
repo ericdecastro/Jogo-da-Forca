@@ -801,9 +801,9 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra">
     <property name="geometry">
      <rect>
-      <x>305</x>
+      <x>390</x>
       <y>387</y>
-      <width>651</width>
+      <width>550</width>
       <height>61</height>
      </rect>
     </property>
@@ -830,7 +830,7 @@ color: rgba(80,45,22,250);</string>
      <number>0</number>
     </property>
     <property name="indent">
-     <number>42</number>
+     <number>32</number>
     </property>
    </widget>
    <widget class="QPushButton" name="btnFecha">
@@ -840,7 +840,7 @@ color: rgba(80,45,22,250);</string>
     <property name="geometry">
      <rect>
       <x>990</x>
-      <y>20</y>
+      <y>10</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -859,8 +859,8 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnMini">
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>30</y>
+      <x>937</x>
+      <y>20</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -923,9 +923,9 @@ color: rgba(80,45,22,250);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>7</y>
       <width>130</width>
-      <height>75</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -992,6 +992,110 @@ color: rgba(80,45,22,250);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="labPalavra2">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>290</y>
+      <width>550</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Schoolbook L</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundotexto.png&quot;);
+color: rgba(80,45,22,250);</string>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="text">
+     <string>palavra</string>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <property name="indent">
+     <number>32</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labPalavra3">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>190</y>
+      <width>550</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Schoolbook L</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundotexto.png&quot;);
+color: rgba(80,45,22,250);</string>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="text">
+     <string>palavra</string>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <property name="indent">
+     <number>32</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labCategoria">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>16</y>
+      <width>221</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Schoolbook L</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/caixatexto.png&quot;);
+color: rgba(80,45,22,250);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="margin">
+     <number>21</number>
+    </property>
+    <property name="indent">
+     <number>17</number>
+    </property>
+   </widget>
    <zorder>lblFundo</zorder>
    <zorder>widgetFundo</zorder>
    <zorder>btnA</zorder>
@@ -1026,6 +1130,9 @@ color: rgba(80,45,22,250);</string>
    <zorder>btnSom</zorder>
    <zorder>labErros</zorder>
    <zorder>labForca</zorder>
+   <zorder>labPalavra2</zorder>
+   <zorder>labPalavra3</zorder>
+   <zorder>labCategoria</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
