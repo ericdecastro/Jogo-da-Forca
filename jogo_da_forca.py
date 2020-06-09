@@ -82,28 +82,34 @@ class Palavra(QDialog):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.setWindowTitle('Jogo da Forca')
         self.setGeometry(400, 150, 620, 480)
-        self.setFixedSize(620, 580)
+        self.setFixedSize(660, 570)
         self.setObjectName('palavra')
         self.setStyleSheet(
             'QWidget#palavra { background-image: url("fundomadeira.png")}')
         self.intro = QSound('intro.wav')
         # self.intro.play()
 
+        self.logo = QLabel('', self)
+        self.logo.setGeometry(QRect(85, 15, 475, 75))
+        self.logo.setStyleSheet(
+            "border-image: url(\"logo.png\");"
+        )
+
         self.label1 = QLabel('                Se estiver jogando sozinho escolha uma categoria: ', self)
         self.label1.setFont(font2)
-        self.label1.setGeometry(QRect(10, 110, 600, 60))
+        self.label1.setGeometry(QRect(30, 110, 600, 60))
         self.label1.setStyleSheet(estilofundotexto)
 
         self.label2 = QLabel('                Se estiver jogando com amigos digite uma palavra\n '
                              '                         sem que os outros jogadores vejam:', self)
         self.label2.setFont(font2)
-        self.label2.setGeometry(QRect(10, 340, 600, 80))
+        self.label2.setGeometry(QRect(30, 340, 600, 80))
         self.label2.setStyleSheet(estilofundotexto)
 
         self.btnObj = QPushButton('Objetos', self)
         self.btnObj.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnObj.setFont(font)
-        self.btnObj.setGeometry(QRect(120, 180, 140, 60))
+        self.btnObj.setGeometry(QRect(130, 180, 160, 60))
         self.btnObj.setStyleSheet(estilobtnligado)
         self.btnObj.clicked.connect(functools.partial(self.sorteio, 'Objetos'))
         self.btnObj.clicked.connect(self.hide)
@@ -114,7 +120,7 @@ class Palavra(QDialog):
         self.btnProf = QPushButton('Profissões', self)
         self.btnProf.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnProf.setFont(font)
-        self.btnProf.setGeometry(QRect(350, 180, 140, 60))
+        self.btnProf.setGeometry(QRect(360, 180, 160, 60))
         self.btnProf.setStyleSheet(estilobtnligado)
         self.btnProf.clicked.connect(functools.partial(self.sorteio, 'Profissões'))
         self.btnProf.clicked.connect(self.hide)
@@ -125,7 +131,7 @@ class Palavra(QDialog):
         self.btnPais = QPushButton('Países', self)
         self.btnPais.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnPais.setFont(font)
-        self.btnPais.setGeometry(QRect(120, 270, 140, 60))
+        self.btnPais.setGeometry(QRect(130, 270, 160, 60))
         self.btnPais.setStyleSheet(estilobtnligado)
         self.btnPais.clicked.connect(functools.partial(self.sorteio, 'Países'))
         self.btnPais.clicked.connect(self.hide)
@@ -136,7 +142,7 @@ class Palavra(QDialog):
         self.btnAni = QPushButton('Animais', self)
         self.btnAni.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnAni.setFont(font)
-        self.btnAni.setGeometry(QRect(350, 270, 140, 60))
+        self.btnAni.setGeometry(QRect(360, 270, 160, 60))
         self.btnAni.setStyleSheet(estilobtnligado)
         self.btnAni.clicked.connect(functools.partial(self.sorteio, 'Animais'))
         self.btnAni.clicked.connect(self.hide)
@@ -145,7 +151,7 @@ class Palavra(QDialog):
         self.btnAni.clicked.connect(functools.partial(clica_botao, self.btnAni, 139, 59, estilobtndesligado))
 
         self.texto = QLineEdit(self)
-        self.texto.setGeometry(QRect(70, 435, 480, 30))
+        self.texto.setGeometry(QRect(90, 435, 480, 30))
         self.texto.setStyleSheet(
             "font-size: 16px;"
         )
@@ -164,7 +170,7 @@ class Palavra(QDialog):
         self.btnCancela = QPushButton('Sair', self)
         self.btnCancela.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnCancela.setFont(font)
-        self.btnCancela.setGeometry(QRect(120, 490, 140, 60))
+        self.btnCancela.setGeometry(QRect(130, 490, 160, 60))
         self.btnCancela.setStyleSheet(estilobtnligado)
         self.btnCancela.clicked.connect(sys.exit)
         self.btnCancela.pressed.connect(functools.partial(aperta_botao, self.btnCancela, 139, 59, estilobtndesligado))
@@ -174,7 +180,7 @@ class Palavra(QDialog):
         self.btnOk = QPushButton('Confirma', self)
         self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnOk.setFont(font)
-        self.btnOk.setGeometry(QRect(350, 490, 140, 60))
+        self.btnOk.setGeometry(QRect(360, 490, 160, 60))
         self.btnOk.setStyleSheet(estilobtndesligado)
         self.btnOk.clicked.connect(self.hide)
         self.btnOk.clicked.connect(self.usuario)
@@ -584,7 +590,7 @@ class Resultado(QDialog):
         else:
             self.perdeu = QSound('perdeu.wav')
             self.perdeu.play()
-            if len(self.palavra) == 3:
+            if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
                 self.label = QLabel(f'    Você perdeu! As palavras eram:\n'
                                     f'    {self.palavra[0].upper()}\n'
                                     f'    {self.palavra[1].upper()}\n'
@@ -600,12 +606,18 @@ class Resultado(QDialog):
                 self.label = QLabel(f'    Você perdeu! A palavra era:\n'
                                     f'    {self.palavra.upper()}\n'
                                     f'    Quer jogar de novo?', self)
-
-                self.setGeometry(540, 300, 380, 190)
-                self.label.setGeometry(QRect(10, 0, 340, 140))
-                self.setFixedSize(360, 230)
-                self.btnOk.setGeometry(QRect(200, 155, 100, 60))
-                self.btnCancela.setGeometry(QRect(70, 155, 100, 60))
+                if len(JogoDaForca.palavra) < 19:
+                    self.setGeometry(540, 300, 360, 230)
+                    self.label.setGeometry(QRect(10, 0, 340, 140))
+                    self.setFixedSize(360, 230)
+                    self.btnOk.setGeometry(QRect(200, 155, 100, 60))
+                    self.btnCancela.setGeometry(QRect(70, 155, 100, 60))
+                else:
+                    self.setGeometry(450, 300, 550, 230)
+                    self.label.setGeometry(QRect(10, 0, 530, 140))
+                    self.setFixedSize(550, 230)
+                    self.btnOk.setGeometry(QRect(290, 155, 100, 60))
+                    self.btnCancela.setGeometry(QRect(160, 155, 100, 60))
 
         self.label.setWordWrap(True)
         self.label.setFont(font2)
