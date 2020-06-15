@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1044</width>
-    <height>645</height>
+    <width>1101</width>
+    <height>653</height>
    </rect>
   </property>
   <property name="cursor">
@@ -42,7 +42,7 @@
    <widget class="QPushButton" name="btnA">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>40</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -76,7 +76,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnB">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>120</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -105,7 +105,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnG">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>520</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -134,7 +134,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnF">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>440</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -163,7 +163,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnC">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>200</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -192,7 +192,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnD">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>280</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -221,7 +221,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnE">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>360</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -250,7 +250,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnH">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>600</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -279,7 +279,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnO">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>120</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -308,7 +308,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnN">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>40</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -337,7 +337,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnL">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>920</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -366,7 +366,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnM">
     <property name="geometry">
      <rect>
-      <x>970</x>
+      <x>1000</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -395,7 +395,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnP">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>200</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -424,7 +424,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnJ">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>760</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -453,7 +453,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnK">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>840</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -482,7 +482,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnI">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>680</x>
       <y>480</y>
       <width>65</width>
       <height>50</height>
@@ -511,7 +511,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnW">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>760</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -540,7 +540,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnV">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>680</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -569,7 +569,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnT">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>520</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -598,7 +598,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnU">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>600</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -627,7 +627,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnX">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>840</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -656,7 +656,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnR">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>360</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -685,7 +685,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnS">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>440</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -714,7 +714,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnY">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>920</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -743,7 +743,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnQ">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>280</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -772,7 +772,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnZ">
     <property name="geometry">
      <rect>
-      <x>970</x>
+      <x>1000</x>
       <y>540</y>
       <width>65</width>
       <height>50</height>
@@ -801,7 +801,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>430</x>
       <y>387</y>
       <width>550</width>
       <height>61</height>
@@ -839,7 +839,7 @@ color: rgba(80,45,22,250);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>990</x>
+      <x>1050</x>
       <y>10</y>
       <width>41</width>
       <height>41</height>
@@ -859,7 +859,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnMini">
     <property name="geometry">
      <rect>
-      <x>937</x>
+      <x>990</x>
       <y>20</y>
       <width>41</width>
       <height>16</height>
@@ -881,7 +881,7 @@ color: rgba(80,45,22,250);</string>
      <rect>
       <x>0</x>
       <y>466</y>
-      <width>1045</width>
+      <width>1101</width>
       <height>151</height>
      </rect>
     </property>
@@ -893,7 +893,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnSom">
     <property name="geometry">
      <rect>
-      <x>970</x>
+      <x>1030</x>
       <y>391</y>
       <width>60</width>
       <height>60</height>
@@ -919,57 +919,17 @@ color: rgba(80,45,22,250);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="labErros">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>7</y>
-      <width>130</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Century Schoolbook L</family>
-      <pointsize>13</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/moldura.png&quot;);
-color: rgba(80,45,22,250);</string>
-    </property>
-    <property name="lineWidth">
-     <number>1</number>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="margin">
-     <number>21</number>
-    </property>
-    <property name="indent">
-     <number>17</number>
-    </property>
-   </widget>
    <widget class="QLabel" name="labForca">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
-      <width>271</width>
-      <height>321</height>
+      <y>7</y>
+      <width>351</width>
+      <height>445</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/forca.png&quot;);
+     <string notr="true">border-image:url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/erro0.png&quot;);
 </string>
     </property>
     <property name="text">
@@ -981,7 +941,7 @@ color: rgba(80,45,22,250);</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1051</width>
+      <width>1101</width>
       <height>471</height>
      </rect>
     </property>
@@ -995,7 +955,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra2">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>530</x>
       <y>290</y>
       <width>550</width>
       <height>61</height>
@@ -1030,7 +990,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra3">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>510</x>
       <y>190</y>
       <width>550</width>
       <height>61</height>
@@ -1065,8 +1025,8 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labCategoria">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>16</y>
+      <x>480</x>
+      <y>10</y>
       <width>221</width>
       <height>51</height>
      </rect>
@@ -1128,7 +1088,6 @@ color: rgba(80,45,22,250);</string>
    <zorder>btnFecha</zorder>
    <zorder>btnMini</zorder>
    <zorder>btnSom</zorder>
-   <zorder>labErros</zorder>
    <zorder>labForca</zorder>
    <zorder>labPalavra2</zorder>
    <zorder>labPalavra3</zorder>
@@ -1139,7 +1098,7 @@ color: rgba(80,45,22,250);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1044</width>
+     <width>1101</width>
      <height>22</height>
     </rect>
    </property>

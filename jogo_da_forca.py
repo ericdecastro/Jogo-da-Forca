@@ -6,7 +6,6 @@ from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlayli
 from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
 from PyQt5.QtWidgets import QPushButton, QDialog
-from Jogo_da_forca1 import boneco
 from Jogo_da_forca1 import listadepalavras
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
 from Jogo_da_forca1 import design_jogo_da_forca
@@ -87,7 +86,7 @@ class Palavra(QDialog):
         self.setStyleSheet(
             'QWidget#palavra { background-image: url("fundomadeira.png")}')
         self.intro = QSound('intro.wav')
-        # self.intro.play()
+        self.intro.play()
 
         self.logo = QLabel('', self)
         self.logo.setGeometry(QRect(85, 15, 475, 75))
@@ -113,9 +112,9 @@ class Palavra(QDialog):
         self.btnObj.setStyleSheet(estilobtnligado)
         self.btnObj.clicked.connect(functools.partial(self.sorteio, 'Objetos'))
         self.btnObj.clicked.connect(self.hide)
-        self.btnObj.pressed.connect(functools.partial(aperta_botao, self.btnObj, 139, 59, estilobtndesligado))
-        self.btnObj.released.connect(functools.partial(solta_botao, self.btnObj, 140, 60, estilobtnligado))
-        self.btnObj.clicked.connect(functools.partial(clica_botao, self.btnObj, 139, 59, estilobtndesligado))
+        self.btnObj.pressed.connect(functools.partial(aperta_botao, self.btnObj, 159, 59, estilobtndesligado))
+        self.btnObj.released.connect(functools.partial(solta_botao, self.btnObj, 160, 60, estilobtnligado))
+        self.btnObj.clicked.connect(functools.partial(clica_botao, self.btnObj, 159, 59, estilobtndesligado))
 
         self.btnProf = QPushButton('Profissões', self)
         self.btnProf.setCursor(QCursor(Qt.PointingHandCursor))
@@ -124,9 +123,9 @@ class Palavra(QDialog):
         self.btnProf.setStyleSheet(estilobtnligado)
         self.btnProf.clicked.connect(functools.partial(self.sorteio, 'Profissões'))
         self.btnProf.clicked.connect(self.hide)
-        self.btnProf.pressed.connect(functools.partial(aperta_botao, self.btnProf, 139, 59, estilobtndesligado))
-        self.btnProf.released.connect(functools.partial(solta_botao, self.btnProf, 140, 60, estilobtnligado))
-        self.btnProf.clicked.connect(functools.partial(clica_botao, self.btnProf, 139, 59, estilobtndesligado))
+        self.btnProf.pressed.connect(functools.partial(aperta_botao, self.btnProf, 159, 59, estilobtndesligado))
+        self.btnProf.released.connect(functools.partial(solta_botao, self.btnProf, 160, 60, estilobtnligado))
+        self.btnProf.clicked.connect(functools.partial(clica_botao, self.btnProf, 159, 59, estilobtndesligado))
 
         self.btnPais = QPushButton('Países', self)
         self.btnPais.setCursor(QCursor(Qt.PointingHandCursor))
@@ -135,9 +134,9 @@ class Palavra(QDialog):
         self.btnPais.setStyleSheet(estilobtnligado)
         self.btnPais.clicked.connect(functools.partial(self.sorteio, 'Países'))
         self.btnPais.clicked.connect(self.hide)
-        self.btnPais.pressed.connect(functools.partial(aperta_botao, self.btnPais, 139, 59, estilobtndesligado))
-        self.btnPais.released.connect(functools.partial(solta_botao, self.btnPais, 140, 60, estilobtnligado))
-        self.btnPais.clicked.connect(functools.partial(clica_botao, self.btnPais, 139, 59, estilobtndesligado))
+        self.btnPais.pressed.connect(functools.partial(aperta_botao, self.btnPais, 159, 59, estilobtndesligado))
+        self.btnPais.released.connect(functools.partial(solta_botao, self.btnPais, 160, 60, estilobtnligado))
+        self.btnPais.clicked.connect(functools.partial(clica_botao, self.btnPais, 159, 59, estilobtndesligado))
 
         self.btnAni = QPushButton('Animais', self)
         self.btnAni.setCursor(QCursor(Qt.PointingHandCursor))
@@ -146,9 +145,9 @@ class Palavra(QDialog):
         self.btnAni.setStyleSheet(estilobtnligado)
         self.btnAni.clicked.connect(functools.partial(self.sorteio, 'Animais'))
         self.btnAni.clicked.connect(self.hide)
-        self.btnAni.pressed.connect(functools.partial(aperta_botao, self.btnAni, 139, 59, estilobtndesligado))
-        self.btnAni.released.connect(functools.partial(solta_botao, self.btnAni, 140, 60, estilobtnligado))
-        self.btnAni.clicked.connect(functools.partial(clica_botao, self.btnAni, 139, 59, estilobtndesligado))
+        self.btnAni.pressed.connect(functools.partial(aperta_botao, self.btnAni, 159, 59, estilobtndesligado))
+        self.btnAni.released.connect(functools.partial(solta_botao, self.btnAni, 160, 60, estilobtnligado))
+        self.btnAni.clicked.connect(functools.partial(clica_botao, self.btnAni, 159, 59, estilobtndesligado))
 
         self.texto = QLineEdit(self)
         self.texto.setGeometry(QRect(90, 435, 480, 30))
@@ -173,9 +172,9 @@ class Palavra(QDialog):
         self.btnCancela.setGeometry(QRect(130, 490, 160, 60))
         self.btnCancela.setStyleSheet(estilobtnligado)
         self.btnCancela.clicked.connect(sys.exit)
-        self.btnCancela.pressed.connect(functools.partial(aperta_botao, self.btnCancela, 139, 59, estilobtndesligado))
-        self.btnCancela.released.connect(functools.partial(solta_botao, self.btnCancela, 140, 60, estilobtnligado))
-        self.btnCancela.clicked.connect(functools.partial(clica_botao, self.btnCancela, 139, 59, estilobtndesligado))
+        self.btnCancela.pressed.connect(functools.partial(aperta_botao, self.btnCancela, 159, 59, estilobtndesligado))
+        self.btnCancela.released.connect(functools.partial(solta_botao, self.btnCancela, 160, 60, estilobtnligado))
+        self.btnCancela.clicked.connect(functools.partial(clica_botao, self.btnCancela, 159, 59, estilobtndesligado))
 
         self.btnOk = QPushButton('Confirma', self)
         self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
@@ -185,9 +184,9 @@ class Palavra(QDialog):
         self.btnOk.clicked.connect(self.hide)
         self.btnOk.clicked.connect(self.usuario)
         self.btnOk.setEnabled(False)
-        self.btnOk.pressed.connect(functools.partial(aperta_botao, self.btnOk, 139, 59, estilobtndesligado))
-        self.btnOk.released.connect(functools.partial(solta_botao, self.btnOk, 140, 60, estilobtnligado))
-        self.btnOk.clicked.connect(functools.partial(clica_botao, self.btnOk, 139, 59, estilobtndesligado))
+        self.btnOk.pressed.connect(functools.partial(aperta_botao, self.btnOk, 159, 59, estilobtndesligado))
+        self.btnOk.released.connect(functools.partial(solta_botao, self.btnOk, 160, 60, estilobtnligado))
+        self.btnOk.clicked.connect(functools.partial(clica_botao, self.btnOk, 159, 59, estilobtndesligado))
 
         self.exec_()
 
@@ -219,7 +218,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
-        self.setFixedSize(1045, 625)
+        self.setFixedSize(1100, 625)
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.som = True
         self.erros = 0
@@ -228,7 +227,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.acertos = 0
         self.show()
         self.labPalavra.setText('')
-        self.exibe()
+        self.forca()
         self.labCategoria.setText(Palavra.categoria)
         JogoDaForca.palavra = Palavra.palavrasescolhidas
 
@@ -249,12 +248,12 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
             self.labCategoria.setHidden(True)
             self.digitada = [' _ '] * len(JogoDaForca.palavra)
             self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
-            self.labPalavra.setGeometry(300, 387, 660, 61)
+            self.labPalavra.setGeometry(365, 387, 650, 61)
             if len(JogoDaForca.palavra) > 20:
                 self.labPalavra.setFont(font3)
-                self.labPalavra.setGeometry(300, 387, 660, 61)
+                self.labPalavra.setGeometry(365, 387, 650, 61)
 
-        self.exibe()
+        self.forca()
 
         self.playlist = QMediaPlaylist()
         self.playlist.addMedia(QMediaContent(
@@ -498,7 +497,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         else:
             if self.som:
                 self.acerto.play()
-        self.exibe()
+        self.forca()
         if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
             if self.acertos == len(JogoDaForca.palavra[0]) + len(JogoDaForca.palavra[1]) + len(JogoDaForca.palavra[2]):
                 self.player.stop()
@@ -526,9 +525,10 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
                 pass
         return palavraa
 
-    def exibe(self):
-        self.labErros.setText('Erros = ' + (str(self.erros)))
-        self.labForca.setText(str(boneco.forca(self.erros)))
+    def forca(self):
+        self.labForca.setStyleSheet(
+            f"border-image: url(\"erro{self.erros}.png\");"
+        )
 
     def som_liga_desliga(self):
         if self.som:
