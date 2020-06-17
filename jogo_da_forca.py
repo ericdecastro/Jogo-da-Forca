@@ -84,12 +84,12 @@ class Palavra(QDialog):
         self.setFixedSize(660, 570)
         self.setObjectName('palavra')
         self.setStyleSheet(
-            'QWidget#palavra { background-image: url("fundomadeira.png")}')
+            'QWidget#palavra { border-image: url("fundo1.png")}')
         self.intro = QSound('intro.wav')
         self.intro.play()
 
         self.logo = QLabel('', self)
-        self.logo.setGeometry(QRect(85, 15, 475, 75))
+        self.logo.setGeometry(QRect(90, 20, 480, 75))
         self.logo.setStyleSheet(
             "border-image: url(\"logo.png\");"
         )
@@ -119,7 +119,7 @@ class Palavra(QDialog):
         self.btnProf = QPushButton('Profissões', self)
         self.btnProf.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnProf.setFont(font)
-        self.btnProf.setGeometry(QRect(360, 180, 160, 60))
+        self.btnProf.setGeometry(QRect(375, 180, 160, 60))
         self.btnProf.setStyleSheet(estilobtnligado)
         self.btnProf.clicked.connect(functools.partial(self.sorteio, 'Profissões'))
         self.btnProf.clicked.connect(self.hide)
@@ -141,7 +141,7 @@ class Palavra(QDialog):
         self.btnAni = QPushButton('Animais', self)
         self.btnAni.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnAni.setFont(font)
-        self.btnAni.setGeometry(QRect(360, 270, 160, 60))
+        self.btnAni.setGeometry(QRect(375, 270, 160, 60))
         self.btnAni.setStyleSheet(estilobtnligado)
         self.btnAni.clicked.connect(functools.partial(self.sorteio, 'Animais'))
         self.btnAni.clicked.connect(self.hide)
@@ -179,7 +179,7 @@ class Palavra(QDialog):
         self.btnOk = QPushButton('Confirma', self)
         self.btnOk.setCursor(QCursor(Qt.PointingHandCursor))
         self.btnOk.setFont(font)
-        self.btnOk.setGeometry(QRect(360, 490, 160, 60))
+        self.btnOk.setGeometry(QRect(375, 490, 160, 60))
         self.btnOk.setStyleSheet(estilobtndesligado)
         self.btnOk.clicked.connect(self.hide)
         self.btnOk.clicked.connect(self.usuario)
@@ -218,7 +218,7 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
-        self.setFixedSize(1100, 625)
+        self.setFixedSize(1115, 630)
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.som = True
         self.erros = 0
@@ -248,16 +248,16 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
             self.labCategoria.setHidden(True)
             self.digitada = [' _ '] * len(JogoDaForca.palavra)
             self.labPalavra.setText(' _ ' * len(JogoDaForca.palavra))
-            self.labPalavra.setGeometry(365, 387, 650, 61)
+            self.labPalavra.setGeometry(370, 387, 660, 61)
             if len(JogoDaForca.palavra) > 20:
                 self.labPalavra.setFont(font3)
-                self.labPalavra.setGeometry(365, 387, 650, 61)
+                self.labPalavra.setGeometry(370, 387, 660, 61)
 
         self.forca()
 
         self.playlist = QMediaPlaylist()
         self.playlist.addMedia(QMediaContent(
-            QUrl.fromLocalFile('/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/musica.wav')))
+            QUrl.fromLocalFile('/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/musica.mp3')))
         self.playlist.setPlaybackMode(QMediaPlaylist.Loop)
         self.player = QMediaPlayer()
         self.player.setPlaylist(self.playlist)
@@ -276,134 +276,134 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.btnMini.clicked.connect(functools.partial(clica_botao, self.btnMini, 40, 15, estilobtnmini))
         self.btnMini.clicked.connect(self.showMinimized)
 
-        self.btnA.pressed.connect(functools.partial(aperta_botao, self.btnA, 64, 49, estilobtndesligado))
-        self.btnA.released.connect(functools.partial(solta_botao, self.btnA, 65, 50, estilobtnligado))
-        self.btnA.clicked.connect(functools.partial(clica_botao, self.btnA, 64, 49, estilobtndesligado, letra=True))
+        self.btnA.pressed.connect(functools.partial(aperta_botao, self.btnA, 64, 54, estilobtndesligado))
+        self.btnA.released.connect(functools.partial(solta_botao, self.btnA, 65, 55, estilobtnligado))
+        self.btnA.clicked.connect(functools.partial(clica_botao, self.btnA, 64, 54, estilobtndesligado, letra=True))
         self.btnA.clicked.connect(functools.partial(self.verifica_letra, self.btnA))
 
-        self.btnB.pressed.connect(functools.partial(aperta_botao, self.btnB, 64, 49, estilobtndesligado))
-        self.btnB.released.connect(functools.partial(solta_botao, self.btnB, 65, 50, estilobtnligado))
-        self.btnB.clicked.connect(functools.partial(clica_botao, self.btnB, 64, 49, estilobtndesligado, letra=True))
+        self.btnB.pressed.connect(functools.partial(aperta_botao, self.btnB, 64, 54, estilobtndesligado))
+        self.btnB.released.connect(functools.partial(solta_botao, self.btnB, 65, 55, estilobtnligado))
+        self.btnB.clicked.connect(functools.partial(clica_botao, self.btnB, 64, 54, estilobtndesligado, letra=True))
         self.btnB.clicked.connect(functools.partial(self.verifica_letra, self.btnB))
 
-        self.btnC.pressed.connect(functools.partial(aperta_botao, self.btnC, 64, 49, estilobtndesligado))
-        self.btnC.released.connect(functools.partial(solta_botao, self.btnC, 65, 50, estilobtnligado))
-        self.btnC.clicked.connect(functools.partial(clica_botao, self.btnC, 64, 49, estilobtndesligado, letra=True))
+        self.btnC.pressed.connect(functools.partial(aperta_botao, self.btnC, 64, 54, estilobtndesligado))
+        self.btnC.released.connect(functools.partial(solta_botao, self.btnC, 65, 55, estilobtnligado))
+        self.btnC.clicked.connect(functools.partial(clica_botao, self.btnC, 64, 54, estilobtndesligado, letra=True))
         self.btnC.clicked.connect(functools.partial(self.verifica_letra, self.btnC))
 
-        self.btnD.pressed.connect(functools.partial(aperta_botao, self.btnD, 64, 49, estilobtndesligado))
-        self.btnD.released.connect(functools.partial(solta_botao, self.btnD, 65, 50, estilobtnligado))
-        self.btnD.clicked.connect(functools.partial(clica_botao, self.btnD, 64, 49, estilobtndesligado, letra=True))
+        self.btnD.pressed.connect(functools.partial(aperta_botao, self.btnD, 64, 54, estilobtndesligado))
+        self.btnD.released.connect(functools.partial(solta_botao, self.btnD, 65, 55, estilobtnligado))
+        self.btnD.clicked.connect(functools.partial(clica_botao, self.btnD, 64, 54, estilobtndesligado, letra=True))
         self.btnD.clicked.connect(functools.partial(self.verifica_letra, self.btnD))
 
-        self.btnE.pressed.connect(functools.partial(aperta_botao, self.btnE, 64, 49, estilobtndesligado))
-        self.btnE.released.connect(functools.partial(solta_botao, self.btnE, 65, 50, estilobtnligado))
-        self.btnE.clicked.connect(functools.partial(clica_botao, self.btnE, 64, 49, estilobtndesligado, letra=True))
+        self.btnE.pressed.connect(functools.partial(aperta_botao, self.btnE, 64, 54, estilobtndesligado))
+        self.btnE.released.connect(functools.partial(solta_botao, self.btnE, 65, 55, estilobtnligado))
+        self.btnE.clicked.connect(functools.partial(clica_botao, self.btnE, 64, 54, estilobtndesligado, letra=True))
         self.btnE.clicked.connect(functools.partial(self.verifica_letra, self.btnE))
 
-        self.btnF.pressed.connect(functools.partial(aperta_botao, self.btnF, 64, 49, estilobtndesligado))
-        self.btnF.released.connect(functools.partial(solta_botao, self.btnF, 65, 50, estilobtnligado))
-        self.btnF.clicked.connect(functools.partial(clica_botao, self.btnF, 64, 49, estilobtndesligado, letra=True))
+        self.btnF.pressed.connect(functools.partial(aperta_botao, self.btnF, 64, 54, estilobtndesligado))
+        self.btnF.released.connect(functools.partial(solta_botao, self.btnF, 65, 55, estilobtnligado))
+        self.btnF.clicked.connect(functools.partial(clica_botao, self.btnF, 64, 54, estilobtndesligado, letra=True))
         self.btnF.clicked.connect(functools.partial(self.verifica_letra, self.btnF))
 
-        self.btnG.pressed.connect(functools.partial(aperta_botao, self.btnG, 64, 49, estilobtndesligado))
-        self.btnG.released.connect(functools.partial(solta_botao, self.btnG, 65, 50, estilobtnligado))
-        self.btnG.clicked.connect(functools.partial(clica_botao, self.btnG, 64, 49, estilobtndesligado, letra=True))
+        self.btnG.pressed.connect(functools.partial(aperta_botao, self.btnG, 64, 54, estilobtndesligado))
+        self.btnG.released.connect(functools.partial(solta_botao, self.btnG, 65, 55, estilobtnligado))
+        self.btnG.clicked.connect(functools.partial(clica_botao, self.btnG, 64, 54, estilobtndesligado, letra=True))
         self.btnG.clicked.connect(functools.partial(self.verifica_letra, self.btnG))
 
-        self.btnH.pressed.connect(functools.partial(aperta_botao, self.btnH, 64, 49, estilobtndesligado))
-        self.btnH.released.connect(functools.partial(solta_botao, self.btnH, 65, 50, estilobtnligado))
-        self.btnH.clicked.connect(functools.partial(clica_botao, self.btnH, 64, 49, estilobtndesligado, letra=True))
+        self.btnH.pressed.connect(functools.partial(aperta_botao, self.btnH, 64, 54, estilobtndesligado))
+        self.btnH.released.connect(functools.partial(solta_botao, self.btnH, 65, 55, estilobtnligado))
+        self.btnH.clicked.connect(functools.partial(clica_botao, self.btnH, 64, 54, estilobtndesligado, letra=True))
         self.btnH.clicked.connect(functools.partial(self.verifica_letra, self.btnH))
 
-        self.btnI.pressed.connect(functools.partial(aperta_botao, self.btnI, 64, 49, estilobtndesligado))
-        self.btnI.released.connect(functools.partial(solta_botao, self.btnI, 65, 50, estilobtnligado))
-        self.btnI.clicked.connect(functools.partial(clica_botao, self.btnI, 64, 49, estilobtndesligado, letra=True))
+        self.btnI.pressed.connect(functools.partial(aperta_botao, self.btnI, 64, 54, estilobtndesligado))
+        self.btnI.released.connect(functools.partial(solta_botao, self.btnI, 65, 55, estilobtnligado))
+        self.btnI.clicked.connect(functools.partial(clica_botao, self.btnI, 64, 54, estilobtndesligado, letra=True))
         self.btnI.clicked.connect(functools.partial(self.verifica_letra, self.btnI))
 
-        self.btnJ.pressed.connect(functools.partial(aperta_botao, self.btnJ, 64, 49, estilobtndesligado))
-        self.btnJ.released.connect(functools.partial(solta_botao, self.btnJ, 65, 50, estilobtnligado))
-        self.btnJ.clicked.connect(functools.partial(clica_botao, self.btnJ, 64, 49, estilobtndesligado, letra=True))
+        self.btnJ.pressed.connect(functools.partial(aperta_botao, self.btnJ, 64, 54, estilobtndesligado))
+        self.btnJ.released.connect(functools.partial(solta_botao, self.btnJ, 65, 55, estilobtnligado))
+        self.btnJ.clicked.connect(functools.partial(clica_botao, self.btnJ, 64, 54, estilobtndesligado, letra=True))
         self.btnJ.clicked.connect(functools.partial(self.verifica_letra, self.btnJ))
 
-        self.btnK.pressed.connect(functools.partial(aperta_botao, self.btnK, 64, 49, estilobtndesligado))
-        self.btnK.released.connect(functools.partial(solta_botao, self.btnK, 65, 50, estilobtnligado))
-        self.btnK.clicked.connect(functools.partial(clica_botao, self.btnK, 64, 49, estilobtndesligado, letra=True))
+        self.btnK.pressed.connect(functools.partial(aperta_botao, self.btnK, 64, 54, estilobtndesligado))
+        self.btnK.released.connect(functools.partial(solta_botao, self.btnK, 65, 55, estilobtnligado))
+        self.btnK.clicked.connect(functools.partial(clica_botao, self.btnK, 64, 54, estilobtndesligado, letra=True))
         self.btnK.clicked.connect(functools.partial(self.verifica_letra, self.btnK))
 
-        self.btnL.pressed.connect(functools.partial(aperta_botao, self.btnL, 64, 49, estilobtndesligado))
-        self.btnL.released.connect(functools.partial(solta_botao, self.btnL, 65, 50, estilobtnligado))
-        self.btnL.clicked.connect(functools.partial(clica_botao, self.btnL, 64, 49, estilobtndesligado, letra=True))
+        self.btnL.pressed.connect(functools.partial(aperta_botao, self.btnL, 64, 54, estilobtndesligado))
+        self.btnL.released.connect(functools.partial(solta_botao, self.btnL, 65, 55, estilobtnligado))
+        self.btnL.clicked.connect(functools.partial(clica_botao, self.btnL, 64, 54, estilobtndesligado, letra=True))
         self.btnL.clicked.connect(functools.partial(self.verifica_letra, self.btnL))
 
-        self.btnM.pressed.connect(functools.partial(aperta_botao, self.btnM, 64, 49, estilobtndesligado))
-        self.btnM.released.connect(functools.partial(solta_botao, self.btnM, 65, 50, estilobtnligado))
-        self.btnM.clicked.connect(functools.partial(clica_botao, self.btnM, 64, 49, estilobtndesligado, letra=True))
+        self.btnM.pressed.connect(functools.partial(aperta_botao, self.btnM, 64, 54, estilobtndesligado))
+        self.btnM.released.connect(functools.partial(solta_botao, self.btnM, 65, 55, estilobtnligado))
+        self.btnM.clicked.connect(functools.partial(clica_botao, self.btnM, 64, 54, estilobtndesligado, letra=True))
         self.btnM.clicked.connect(functools.partial(self.verifica_letra, self.btnM))
 
-        self.btnN.pressed.connect(functools.partial(aperta_botao, self.btnN, 64, 49, estilobtndesligado))
-        self.btnN.released.connect(functools.partial(solta_botao, self.btnN, 65, 50, estilobtnligado))
-        self.btnN.clicked.connect(functools.partial(clica_botao, self.btnN, 64, 49, estilobtndesligado, letra=True))
+        self.btnN.pressed.connect(functools.partial(aperta_botao, self.btnN, 64, 54, estilobtndesligado))
+        self.btnN.released.connect(functools.partial(solta_botao, self.btnN, 65, 55, estilobtnligado))
+        self.btnN.clicked.connect(functools.partial(clica_botao, self.btnN, 64, 54, estilobtndesligado, letra=True))
         self.btnN.clicked.connect(functools.partial(self.verifica_letra, self.btnN))
 
-        self.btnO.pressed.connect(functools.partial(aperta_botao, self.btnO, 64, 49, estilobtndesligado))
-        self.btnO.released.connect(functools.partial(solta_botao, self.btnO, 65, 50, estilobtnligado))
-        self.btnO.clicked.connect(functools.partial(clica_botao, self.btnO, 64, 49, estilobtndesligado, letra=True))
+        self.btnO.pressed.connect(functools.partial(aperta_botao, self.btnO, 64, 54, estilobtndesligado))
+        self.btnO.released.connect(functools.partial(solta_botao, self.btnO, 65, 55, estilobtnligado))
+        self.btnO.clicked.connect(functools.partial(clica_botao, self.btnO, 64, 54, estilobtndesligado, letra=True))
         self.btnO.clicked.connect(functools.partial(self.verifica_letra, self.btnO))
 
-        self.btnP.pressed.connect(functools.partial(aperta_botao, self.btnP, 64, 49, estilobtndesligado))
-        self.btnP.released.connect(functools.partial(solta_botao, self.btnP, 65, 50, estilobtnligado))
-        self.btnP.clicked.connect(functools.partial(clica_botao, self.btnP, 64, 49, estilobtndesligado, letra=True))
+        self.btnP.pressed.connect(functools.partial(aperta_botao, self.btnP, 64, 54, estilobtndesligado))
+        self.btnP.released.connect(functools.partial(solta_botao, self.btnP, 65, 55, estilobtnligado))
+        self.btnP.clicked.connect(functools.partial(clica_botao, self.btnP, 64, 54, estilobtndesligado, letra=True))
         self.btnP.clicked.connect(functools.partial(self.verifica_letra, self.btnP))
 
-        self.btnQ.pressed.connect(functools.partial(aperta_botao, self.btnQ, 64, 49, estilobtndesligado))
-        self.btnQ.released.connect(functools.partial(solta_botao, self.btnQ, 65, 50, estilobtnligado))
-        self.btnQ.clicked.connect(functools.partial(clica_botao, self.btnQ, 64, 49, estilobtndesligado, letra=True))
+        self.btnQ.pressed.connect(functools.partial(aperta_botao, self.btnQ, 64, 54, estilobtndesligado))
+        self.btnQ.released.connect(functools.partial(solta_botao, self.btnQ, 65, 55, estilobtnligado))
+        self.btnQ.clicked.connect(functools.partial(clica_botao, self.btnQ, 64, 54, estilobtndesligado, letra=True))
         self.btnQ.clicked.connect(functools.partial(self.verifica_letra, self.btnQ))
 
-        self.btnR.pressed.connect(functools.partial(aperta_botao, self.btnR, 64, 49, estilobtndesligado))
-        self.btnR.released.connect(functools.partial(solta_botao, self.btnR, 65, 50, estilobtnligado))
-        self.btnR.clicked.connect(functools.partial(clica_botao, self.btnR, 64, 49, estilobtndesligado, letra=True))
+        self.btnR.pressed.connect(functools.partial(aperta_botao, self.btnR, 64, 54, estilobtndesligado))
+        self.btnR.released.connect(functools.partial(solta_botao, self.btnR, 65, 55, estilobtnligado))
+        self.btnR.clicked.connect(functools.partial(clica_botao, self.btnR, 64, 54, estilobtndesligado, letra=True))
         self.btnR.clicked.connect(functools.partial(self.verifica_letra, self.btnR))
 
-        self.btnS.pressed.connect(functools.partial(aperta_botao, self.btnS, 64, 49, estilobtndesligado))
-        self.btnS.released.connect(functools.partial(solta_botao, self.btnS, 65, 50, estilobtnligado))
-        self.btnS.clicked.connect(functools.partial(clica_botao, self.btnS, 64, 49, estilobtndesligado, letra=True))
+        self.btnS.pressed.connect(functools.partial(aperta_botao, self.btnS, 64, 54, estilobtndesligado))
+        self.btnS.released.connect(functools.partial(solta_botao, self.btnS, 65, 55, estilobtnligado))
+        self.btnS.clicked.connect(functools.partial(clica_botao, self.btnS, 64, 54, estilobtndesligado, letra=True))
         self.btnS.clicked.connect(functools.partial(self.verifica_letra, self.btnS))
 
-        self.btnT.pressed.connect(functools.partial(aperta_botao, self.btnT, 64, 49, estilobtndesligado))
-        self.btnT.released.connect(functools.partial(solta_botao, self.btnT, 65, 50, estilobtnligado))
-        self.btnT.clicked.connect(functools.partial(clica_botao, self.btnT, 64, 49, estilobtndesligado, letra=True))
+        self.btnT.pressed.connect(functools.partial(aperta_botao, self.btnT, 64, 54, estilobtndesligado))
+        self.btnT.released.connect(functools.partial(solta_botao, self.btnT, 65, 55, estilobtnligado))
+        self.btnT.clicked.connect(functools.partial(clica_botao, self.btnT, 64, 54, estilobtndesligado, letra=True))
         self.btnT.clicked.connect(functools.partial(self.verifica_letra, self.btnT))
 
-        self.btnU.pressed.connect(functools.partial(aperta_botao, self.btnU, 64, 49, estilobtndesligado))
-        self.btnU.released.connect(functools.partial(solta_botao, self.btnU, 65, 50, estilobtnligado))
-        self.btnU.clicked.connect(functools.partial(clica_botao, self.btnU, 64, 49, estilobtndesligado, letra=True))
+        self.btnU.pressed.connect(functools.partial(aperta_botao, self.btnU, 64, 54, estilobtndesligado))
+        self.btnU.released.connect(functools.partial(solta_botao, self.btnU, 65, 55, estilobtnligado))
+        self.btnU.clicked.connect(functools.partial(clica_botao, self.btnU, 64, 54, estilobtndesligado, letra=True))
         self.btnU.clicked.connect(functools.partial(self.verifica_letra, self.btnU))
 
-        self.btnV.pressed.connect(functools.partial(aperta_botao, self.btnV, 64, 49, estilobtndesligado))
-        self.btnV.released.connect(functools.partial(solta_botao, self.btnV, 65, 50, estilobtnligado))
-        self.btnV.clicked.connect(functools.partial(clica_botao, self.btnV, 64, 49, estilobtndesligado, letra=True))
+        self.btnV.pressed.connect(functools.partial(aperta_botao, self.btnV, 64, 54, estilobtndesligado))
+        self.btnV.released.connect(functools.partial(solta_botao, self.btnV, 65, 55, estilobtnligado))
+        self.btnV.clicked.connect(functools.partial(clica_botao, self.btnV, 64, 54, estilobtndesligado, letra=True))
         self.btnV.clicked.connect(functools.partial(self.verifica_letra, self.btnV))
 
-        self.btnW.pressed.connect(functools.partial(aperta_botao, self.btnW, 64, 49, estilobtndesligado))
-        self.btnW.released.connect(functools.partial(solta_botao, self.btnW, 65, 50, estilobtnligado))
-        self.btnW.clicked.connect(functools.partial(clica_botao, self.btnW, 64, 49, estilobtndesligado, letra=True))
+        self.btnW.pressed.connect(functools.partial(aperta_botao, self.btnW, 64, 54, estilobtndesligado))
+        self.btnW.released.connect(functools.partial(solta_botao, self.btnW, 65, 55, estilobtnligado))
+        self.btnW.clicked.connect(functools.partial(clica_botao, self.btnW, 64, 54, estilobtndesligado, letra=True))
         self.btnW.clicked.connect(functools.partial(self.verifica_letra, self.btnW))
 
-        self.btnX.pressed.connect(functools.partial(aperta_botao, self.btnX, 64, 49, estilobtndesligado))
-        self.btnX.released.connect(functools.partial(solta_botao, self.btnX, 65, 50, estilobtnligado))
-        self.btnX.clicked.connect(functools.partial(clica_botao, self.btnX, 64, 49, estilobtndesligado, letra=True))
+        self.btnX.pressed.connect(functools.partial(aperta_botao, self.btnX, 64, 54, estilobtndesligado))
+        self.btnX.released.connect(functools.partial(solta_botao, self.btnX, 65, 55, estilobtnligado))
+        self.btnX.clicked.connect(functools.partial(clica_botao, self.btnX, 64, 54, estilobtndesligado, letra=True))
         self.btnX.clicked.connect(functools.partial(self.verifica_letra, self.btnX))
 
-        self.btnY.pressed.connect(functools.partial(aperta_botao, self.btnY, 64, 49, estilobtndesligado))
-        self.btnY.released.connect(functools.partial(solta_botao, self.btnY, 65, 50, estilobtnligado))
-        self.btnY.clicked.connect(functools.partial(clica_botao, self.btnY, 64, 49, estilobtndesligado, letra=True))
+        self.btnY.pressed.connect(functools.partial(aperta_botao, self.btnY, 64, 54, estilobtndesligado))
+        self.btnY.released.connect(functools.partial(solta_botao, self.btnY, 65, 55, estilobtnligado))
+        self.btnY.clicked.connect(functools.partial(clica_botao, self.btnY, 64, 54, estilobtndesligado, letra=True))
         self.btnY.clicked.connect(functools.partial(self.verifica_letra, self.btnY))
 
-        self.btnZ.pressed.connect(functools.partial(aperta_botao, self.btnZ, 64, 49, estilobtndesligado))
-        self.btnZ.released.connect(functools.partial(solta_botao, self.btnZ, 65, 50, estilobtnligado))
-        self.btnZ.clicked.connect(functools.partial(clica_botao, self.btnZ, 64, 49, estilobtndesligado, letra=True))
+        self.btnZ.pressed.connect(functools.partial(aperta_botao, self.btnZ, 64, 54, estilobtndesligado))
+        self.btnZ.released.connect(functools.partial(solta_botao, self.btnZ, 65, 55, estilobtnligado))
+        self.btnZ.clicked.connect(functools.partial(clica_botao, self.btnZ, 64, 54, estilobtndesligado, letra=True))
         self.btnZ.clicked.connect(functools.partial(self.verifica_letra, self.btnZ))
 
     def verifica_letra(self, btn):
@@ -556,7 +556,7 @@ class Resultado(QDialog):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.setObjectName('resultado')
         self.setStyleSheet(
-            'QWidget#resultado { background-image: url("fundomadeira.png")}')
+            'QWidget#resultado { border-image: url("fundo1.png")}')
 
         self.palavra = JogoDaForca.palavra
 
@@ -592,11 +592,11 @@ class Resultado(QDialog):
             self.perdeu.play()
             if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
                 self.label = QLabel(f'    Você perdeu! As palavras eram:\n'
-                                    f'    {self.palavra[0].upper()}\n'
-                                    f'    {self.palavra[1].upper()}\n'
                                     f'    {self.palavra[2].upper()}\n'
+                                    f'    {self.palavra[1].upper()}\n'
+                                    f'    {self.palavra[0].upper()}\n'
                                     f'    Quer jogar de novo?', self)
-                self.setGeometry(540, 300, 380, 190)
+                self.setGeometry(550, 280, 380, 190)
                 self.label.setGeometry(QRect(10, 0, 340, 180))
                 self.setFixedSize(360, 260)
                 self.btnOk.setGeometry(QRect(200, 185, 100, 60))
@@ -607,13 +607,13 @@ class Resultado(QDialog):
                                     f'    {self.palavra.upper()}\n'
                                     f'    Quer jogar de novo?', self)
                 if len(JogoDaForca.palavra) < 19:
-                    self.setGeometry(540, 300, 360, 230)
+                    self.setGeometry(550, 280, 360, 230)
                     self.label.setGeometry(QRect(10, 0, 340, 140))
                     self.setFixedSize(360, 230)
                     self.btnOk.setGeometry(QRect(200, 155, 100, 60))
                     self.btnCancela.setGeometry(QRect(70, 155, 100, 60))
                 else:
-                    self.setGeometry(450, 300, 550, 230)
+                    self.setGeometry(450, 280, 550, 230)
                     self.label.setGeometry(QRect(10, 0, 530, 140))
                     self.setFixedSize(550, 230)
                     self.btnOk.setGeometry(QRect(290, 155, 100, 60))
@@ -640,3 +640,4 @@ if __name__ == '__main__':
     palavras = Palavra()
     jogodaforca = JogoDaForca()
     qt.exec_()
+

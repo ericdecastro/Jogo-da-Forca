@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1101</width>
-    <height>653</height>
+    <width>1121</width>
+    <height>652</height>
    </rect>
   </property>
   <property name="cursor">
@@ -26,11 +26,13 @@
    <string>Jogo da Forca</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundomadeira.png&quot;);
-</string>
+   <string notr="true"/>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
@@ -42,10 +44,10 @@
    <widget class="QPushButton" name="btnA">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>480</y>
+      <x>15</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -76,10 +78,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnB">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>480</y>
+      <x>100</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -105,10 +107,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnG">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>480</y>
+      <x>525</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -135,9 +137,9 @@ color: rgba(80,45,22,250);</string>
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>480</y>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -163,10 +165,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnC">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>480</y>
+      <x>185</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -192,10 +194,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnD">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>480</y>
+      <x>270</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -221,10 +223,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnE">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>480</y>
+      <x>355</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -250,10 +252,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnH">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>480</y>
+      <x>610</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -279,10 +281,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnO">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>540</y>
+      <x>100</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -308,10 +310,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnN">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>540</y>
+      <x>15</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -337,10 +339,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnL">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>480</y>
+      <x>950</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -366,10 +368,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnM">
     <property name="geometry">
      <rect>
-      <x>1000</x>
-      <y>480</y>
+      <x>1035</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -395,10 +397,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnP">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>540</y>
+      <x>185</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -424,10 +426,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnJ">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>480</y>
+      <x>780</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -453,10 +455,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnK">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>480</y>
+      <x>865</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -482,10 +484,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnI">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>480</y>
+      <x>695</x>
+      <y>487</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -511,10 +513,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnW">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>540</y>
+      <x>780</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -540,10 +542,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnV">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>540</y>
+      <x>695</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -569,10 +571,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnT">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>540</y>
+      <x>525</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -598,10 +600,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnU">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>540</y>
+      <x>610</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -627,10 +629,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnX">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>540</y>
+      <x>865</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -656,10 +658,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnR">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>540</y>
+      <x>355</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -686,9 +688,9 @@ color: rgba(80,45,22,250);</string>
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>540</y>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -714,10 +716,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnY">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>540</y>
+      <x>950</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -743,10 +745,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnQ">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>540</y>
+      <x>270</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -772,10 +774,10 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnZ">
     <property name="geometry">
      <rect>
-      <x>1000</x>
-      <y>540</y>
+      <x>1035</x>
+      <y>559</y>
       <width>65</width>
-      <height>50</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="font">
@@ -839,7 +841,7 @@ color: rgba(80,45,22,250);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>1050</x>
+      <x>1065</x>
       <y>10</y>
       <width>41</width>
       <height>41</height>
@@ -859,7 +861,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QPushButton" name="btnMini">
     <property name="geometry">
      <rect>
-      <x>990</x>
+      <x>1015</x>
       <y>20</y>
       <width>41</width>
       <height>16</height>
@@ -880,20 +882,20 @@ color: rgba(80,45,22,250);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>466</y>
-      <width>1101</width>
-      <height>151</height>
+      <y>470</y>
+      <width>1121</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundomadeira.png&quot;);
+     <string notr="true">border-image: url(&quot;/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/fundo2.png&quot;);
 </string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSom">
     <property name="geometry">
      <rect>
-      <x>1030</x>
+      <x>1045</x>
       <y>391</y>
       <width>60</width>
       <height>60</height>
@@ -941,7 +943,7 @@ color: rgba(80,45,22,250);</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1101</width>
+      <width>1121</width>
       <height>471</height>
      </rect>
     </property>
@@ -955,7 +957,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra2">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>520</x>
       <y>290</y>
       <width>550</width>
       <height>61</height>
@@ -990,7 +992,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labPalavra3">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>470</x>
       <y>190</y>
       <width>550</width>
       <height>61</height>
@@ -1025,7 +1027,7 @@ color: rgba(80,45,22,250);</string>
    <widget class="QLabel" name="labCategoria">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>460</x>
       <y>10</y>
       <width>221</width>
       <height>51</height>
@@ -1098,12 +1100,11 @@ color: rgba(80,45,22,250);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1101</width>
+     <width>1121</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
