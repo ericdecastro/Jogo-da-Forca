@@ -1,14 +1,16 @@
+#!/usr/bin/env python3
+
 import functools
 import sys
 import os
 
 from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlaylist
-from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl
+from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl, QFile, QFileInfo
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
 from PyQt5.QtWidgets import QPushButton, QDialog
-from Jogo_da_forca1 import listadepalavras
+import listadepalavras
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
-from Jogo_da_forca1 import design_jogo_da_forca
+import design_jogo_da_forca
 from random import sample
 
 font = QFont()
@@ -256,8 +258,8 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.forca()
 
         self.playlist = QMediaPlaylist()
-        self.playlist.addMedia(QMediaContent(
-            QUrl.fromLocalFile('/home/ericdecastro/PycharmProjects/Python_udemy/Jogo_da_forca1/musica.mp3')))
+        self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(QFileInfo("musica.mp3").absoluteFilePath())))
+
         self.playlist.setPlaybackMode(QMediaPlaylist.Loop)
         self.player = QMediaPlayer()
         self.player.setPlaylist(self.playlist)
