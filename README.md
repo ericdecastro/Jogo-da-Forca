@@ -21,4 +21,4 @@ Projeto de jogo da forca feito em Python.
 
 - Outros, como o desenho de fundo, eu peguei na internet.
 
-- O intuito principal desse projeto é de servir como portfólio
+- O intuito principal desse projeto é de servir como portfólio.
