@@ -1,17 +1,21 @@
-#!/usr/bin/env python3
-
 import functools
 import sys
 import os
 
 from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlaylist
-from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl, QFile, QFileInfo
+from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl, QFileInfo
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
 from PyQt5.QtWidgets import QPushButton, QDialog
 import listadepalavras
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
 import design_jogo_da_forca
 from random import sample
+
+
+def resource_path(relative_path):
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
 
 font = QFont()
 font.setFamily("Century Schoolbook L")
@@ -31,31 +35,44 @@ font3.setPointSize(10)
 font3.setBold(True)
 font3.setWeight(75)
 
-estilobtndesligado = ("border-image:url(\"botaodesativado.png\");\n"
+
+caminhobtndesligado = resource_path('botaodesativado.png')
+estilobtndesligado = (f"border-image:url({caminhobtndesligado});\n"
                       "color: rgba(80,45,22,200);")
 
-estilobtnligado = ("border-image:url(\"botaoletra.png\");\n"
+caminhobtnligado = resource_path('botaoletra.png')
+estilobtnligado = (f"border-image:url({caminhobtnligado});\n"
                    "color: rgba(80,45,22,250);")
 
-estilofundotexto = ("border-image: url(\"fundotexto.png\");"
+caminhofundotexto = resource_path('fundotexto.png')
+estilofundotexto = (f"border-image: url({caminhofundotexto});"
                     "color: rgba(80,45,22,250);")
 
-estilobtnmini = "border-image: url(\"botaomini.png\");"
+caminhobtnmini = resource_path('botaomini.png')
+estilobtnmini = f"border-image: url({caminhobtnmini});"
 
-estilobtnminiapertado = "border-image: url(\"botaominiapertado.png\");"
+caminhobtnminiapertado = resource_path('botaominiapertado.png')
+estilobtnminiapertado = f"border-image: url({caminhobtnminiapertado});"
 
-estilobtnfechar = "border-image: url(\"botaofechar.png\");"
+caminhobtnfechar = resource_path('botaofechar.png')
+estilobtnfechar = f"border-image: url({caminhobtnfechar});"
 
-estilobtnfecharapertado = "border-image: url(\"botaofecharapertado.png\");"
+caminhobtnfecharapertado = resource_path('botaofecharapertado.png')
+estilobtnfecharapertado = f"border-image: url({caminhobtnfecharapertado});"
 
-estilosomligado = "border-image: url(\"somligado.png\");"
+caminhosomligado = resource_path('somligado.png')
+estilosomligado = f"border-image: url({caminhosomligado});"
 
-estilosomligadoapertado = "border-image: url(\"somligadoapertado.png\");"
+caminhosomligadoapertado = resource_path('somligadoapertado.png')
+estilosomligadoapertado = f"border-image: url({caminhosomligadoapertado});"
 
-estilosomdesligado = "border-image: url(\"somdesligado.png\");"
+caminhosomdesligado = resource_path('somdesligado.png')
+estilosomdesligado = f"border-image: url({caminhosomdesligado});"
 
-estilosomdesligadoapertado = "border-image: url(\"somdesligadoapertado.png\");"
+caminhosomdesligadoapertado = resource_path('somdesligadoapertado.png')
+estilosomdesligadoapertado = f"border-image: url({caminhosomdesligadoapertado});"
 
+caminhofundo1 = resource_path('fundo1.png')
 
 def aperta_botao(btn, width, height, estilo):
     btn.resize(width, height)
@@ -85,15 +102,18 @@ class Palavra(QDialog):
         self.setGeometry(400, 150, 620, 480)
         self.setFixedSize(660, 570)
         self.setObjectName('palavra')
+
         self.setStyleSheet(
-            'QWidget#palavra { border-image: url("fundo1.png")}')
-        self.intro = QSound('intro.wav')
+            f'QWidget#palavra {{border-image: url({caminhofundo1})}}')
+        self.caminhointro = resource_path('intro.wav')
+        self.intro = QSound(self.caminhointro)
         self.intro.play()
 
         self.logo = QLabel('', self)
         self.logo.setGeometry(QRect(90, 20, 480, 75))
+        self.caminhologo = resource_path("logo.png")
         self.logo.setStyleSheet(
-            "border-image: url(\"logo.png\");"
+            f"border-image: url({self.caminhologo});"
         )
 
         self.label1 = QLabel('                Se estiver jogando sozinho escolha uma categoria: ', self)
@@ -224,8 +244,10 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.som = True
         self.erros = 0
-        self.erro = QSound('errou.wav')
-        self.acerto = QSound('acertou.wav')
+        self.caminhoerro = resource_path('errou.wav')
+        self.erro = QSound(self.caminhoerro)
+        self.caminhoacerto = resource_path('acertou.wav')
+        self.acerto = QSound(self.caminhoacerto)
         self.acertos = 0
         self.show()
         self.labPalavra.setText('')
@@ -258,7 +280,8 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         self.forca()
 
         self.playlist = QMediaPlaylist()
-        self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(QFileInfo("musica.mp3").absoluteFilePath())))
+        self.caminhomusica = resource_path('musica.mp3')
+        self.playlist.addMedia(QMediaContent(QUrl.fromLocalFile(QFileInfo(self.caminhomusica).absoluteFilePath())))
 
         self.playlist.setPlaybackMode(QMediaPlaylist.Loop)
         self.player = QMediaPlayer()
@@ -528,8 +551,9 @@ class JogoDaForca(QMainWindow, design_jogo_da_forca.Ui_JogodaForca):
         return palavraa
 
     def forca(self):
+        self.caminhoforca = resource_path('erro')
         self.labForca.setStyleSheet(
-            f"border-image: url(\"erro{self.erros}.png\");"
+            f"border-image: url({self.caminhoforca+str(self.erros)+'.png'});"
         )
 
     def som_liga_desliga(self):
@@ -558,7 +582,7 @@ class Resultado(QDialog):
         self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
         self.setObjectName('resultado')
         self.setStyleSheet(
-            'QWidget#resultado { border-image: url("fundo1.png")}')
+            f'QWidget#resultado {{ border-image: url({caminhofundo1})}}')
 
         self.palavra = JogoDaForca.palavra
 
@@ -581,7 +605,8 @@ class Resultado(QDialog):
         self.btnCancela.clicked.connect(functools.partial(clica_botao, self.btnCancela, 99, 59, estilobtndesligado))
 
         if ganhou:
-            self.ganhou = QSound('ganhou.wav')
+            self.caminhoganhou = resource_path('ganhou.wav')
+            self.ganhou = QSound(self.caminhoganhou)
             self.ganhou.play()
             self.setGeometry(580, 320, 280, 200)
             self.label = QLabel('          Você ganhou! \n    Quer jogar de novo?', self)
@@ -590,7 +615,8 @@ class Resultado(QDialog):
             self.btnOk.setGeometry(QRect(150, 95, 100, 60))
             self.btnCancela.setGeometry(QRect(30, 95, 100, 60))
         else:
-            self.perdeu = QSound('perdeu.wav')
+            self.caminhoperdeu = resource_path('perdeu.wav')
+            self.perdeu = QSound(self.caminhoperdeu)
             self.perdeu.play()
             if len(JogoDaForca.palavra) == 3 and len(JogoDaForca.palavra[1]) > 1:
                 self.label = QLabel(f'    Você perdeu! As palavras eram:\n'
@@ -599,10 +625,10 @@ class Resultado(QDialog):
                                     f'    {self.palavra[0].upper()}\n'
                                     f'    Quer jogar de novo?', self)
                 self.setGeometry(550, 280, 380, 190)
-                self.label.setGeometry(QRect(10, 0, 340, 180))
-                self.setFixedSize(360, 260)
-                self.btnOk.setGeometry(QRect(200, 185, 100, 60))
-                self.btnCancela.setGeometry(QRect(70, 185, 100, 60))
+                self.label.setGeometry(QRect(30, 0, 340, 180))
+                self.setFixedSize(400, 260)
+                self.btnOk.setGeometry(QRect(215, 185, 100, 60))
+                self.btnCancela.setGeometry(QRect(85, 185, 100, 60))
             else:
                 self.palavra = ''.join(self.palavra)
                 self.label = QLabel(f'    Você perdeu! A palavra era:\n'
@@ -610,16 +636,16 @@ class Resultado(QDialog):
                                     f'    Quer jogar de novo?', self)
                 if len(JogoDaForca.palavra) < 19:
                     self.setGeometry(550, 280, 360, 230)
-                    self.label.setGeometry(QRect(10, 0, 340, 140))
-                    self.setFixedSize(360, 230)
-                    self.btnOk.setGeometry(QRect(200, 155, 100, 60))
-                    self.btnCancela.setGeometry(QRect(70, 155, 100, 60))
+                    self.label.setGeometry(QRect(30, 0, 340, 140))
+                    self.setFixedSize(400, 230)
+                    self.btnOk.setGeometry(QRect(215, 155, 100, 60))
+                    self.btnCancela.setGeometry(QRect(85, 155, 100, 60))
                 else:
                     self.setGeometry(450, 280, 550, 230)
-                    self.label.setGeometry(QRect(10, 0, 530, 140))
-                    self.setFixedSize(550, 230)
-                    self.btnOk.setGeometry(QRect(290, 155, 100, 60))
-                    self.btnCancela.setGeometry(QRect(160, 155, 100, 60))
+                    self.label.setGeometry(QRect(30, 0, 530, 140))
+                    self.setFixedSize(590, 230)
+                    self.btnOk.setGeometry(QRect(315, 155, 100, 60))
+                    self.btnCancela.setGeometry(QRect(175, 155, 100, 60))
 
         self.label.setWordWrap(True)
         self.label.setFont(font2)
@@ -642,4 +668,3 @@ if __name__ == '__main__':
     palavras = Palavra()
     jogodaforca = JogoDaForca()
     qt.exec_()
-

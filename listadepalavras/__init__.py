@@ -29,13 +29,13 @@ profissoes = ['açougueiro', 'advogado', 'aeromoça', 'atleta', 'astrônomo', 'a
               'jornalista', 'jornaleiro', 'juiz', 'lavrador', 'legista', 'lixeiro', 'locutor', 'lutador', 'lenhador',
               'marceneiro', 'maestro', 'matemático', 'músico', 'motorista', 'metalúrgico', 'médico', 'mecânico',
               'maquiadora', 'massagista', 'maquinista', 'manicure', 'nadador', 'nutricionista', 'neurologista',
-              'numerólogo', 'neurocirurgião', 'oftalmologista', 'oculista', 'ortodontista', 'obstetra',
-              'otorrinolaringologista', 'paraquedista', 'paramédico', 'pescador', 'perito', 'pintor', 'pianista',
-              'pizzaiolo', 'publicitário', 'psicólogo', 'personal trainer', 'piloto', 'político', 'prefeito',
-              'presidente', 'programador', 'químico', 'quitandeiro', 'quadrinista', 'roteirista', 'repórter', 'recepcionista',
-              'radiologista', 'senador', 'sonoplasta', 'sociólogo', 'soldado', 'sargento', 'sapateiro', 'taxista',
-              'tabelião', 'tenente', 'terapeuta', 'tatuador', 'trapezista', 'urologista', 'urbanista', 'vigilante',
-              'veterinário', 'vendedor', 'vigia', 'vereador', 'web designer', 'zoólogo', 'zelador']
+              'numerólogo', 'neurocirurgião', 'oftalmologista', 'oculista', 'ortodontista', 'obstetra', 'paraquedista',
+              'paramédico', 'pescador', 'perito', 'pintor', 'pianista', 'pizzaiolo', 'publicitário', 'psicólogo',
+              'personal trainer', 'piloto', 'político', 'prefeito', 'presidente', 'programador', 'químico',
+              'quitandeiro', 'quadrinista', 'roteirista', 'repórter', 'recepcionista', 'radiologista', 'senador',
+              'sonoplasta', 'sociólogo', 'soldado', 'sargento', 'sapateiro', 'taxista', 'tabelião', 'tenente',
+              'terapeuta', 'tatuador', 'trapezista', 'urologista', 'urbanista', 'vigilante', 'veterinário', 'vendedor',
+              'vigia', 'vereador', 'web designer', 'zoólogo', 'zelador']
 
 objetos = ['agulha', 'alfinete', 'anel', 'anzol', 'apontador', 'almofada', 'abajur', 'bola', 'balão', 'botas',
            'bexiga', 'borracha', 'batom', 'cola', 'colher', 'caneta', 'camisa', 'camiseta', 'camisola', 'calça', 'copo',
