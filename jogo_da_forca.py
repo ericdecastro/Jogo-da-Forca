@@ -4,7 +4,7 @@ import os
 
 from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl, QFileInfo
-from PyQt5.QtGui import QRegExpValidator, QCursor, QFont
+from PyQt5.QtGui import QRegExpValidator, QCursor, QFont, QIcon
 from PyQt5.QtWidgets import QPushButton, QDialog
 import listadepalavras
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
@@ -665,6 +665,8 @@ class Resultado(QDialog):
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
+    icone = QIcon(resource_path('icone.ico'))
+    qt.setWindowIcon(icone)
     palavras = Palavra()
     jogodaforca = JogoDaForca()
     qt.exec_()
