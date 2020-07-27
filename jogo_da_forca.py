@@ -74,6 +74,7 @@ estilosomdesligadoapertado = f"border-image: url({caminhosomdesligadoapertado});
 
 caminhofundo1 = resource_path('fundo1.png')
 
+
 def aperta_botao(btn, width, height, estilo):
     btn.resize(width, height)
     btn.setStyleSheet(estilo)
