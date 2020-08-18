@@ -2,6 +2,7 @@ import functools
 import sys
 import os
 
+
 from PyQt5.QtMultimedia import QSound, QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtCore import Qt, QRegExp, QRect, QUrl, QFileInfo
 from PyQt5.QtGui import QRegExpValidator, QCursor, QFont, QIcon
@@ -14,7 +15,7 @@ from random import sample
 
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+    return str(os.path.join(base_path, relative_path)).replace('\\', '/')
 
 
 font = QFont()
