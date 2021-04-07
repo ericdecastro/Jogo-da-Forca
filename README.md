@@ -22,3 +22,5 @@ Projeto de jogo da forca feito em Python.
 - Outros, como o desenho de fundo, eu peguei na internet.
 
 - O intuito principal desse projeto é de servir como portfólio.
+
+<img src="https://user-images.githubusercontent.com/60152779/113916920-f11d3f80-97b6-11eb-8895-a56f76449fe7.png" width="90%"></img> <img src="https://user-images.githubusercontent.com/60152779/113916929-f2e70300-97b6-11eb-9232-477a864cf30a.png" width="90%"></img> 
